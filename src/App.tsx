@@ -1,10 +1,5 @@
 function App() {
-
-  return (
-    <>
-      Dashboard App
-    </>
-  )
+  return <>Dashboard App</>;
 }
 
-export default App
+export default App;

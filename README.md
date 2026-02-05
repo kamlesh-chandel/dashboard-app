@@ -40,6 +40,7 @@ The app includes **authentication flow, protected routes, lazy-loaded pages, and
 ---
 
 ## Project Structure
+
 ```bash
 Directory structure:
 └── src/
@@ -86,24 +87,32 @@ Directory structure:
 This project follows a **feature-first architecture**:
 
 ### `app/`
+
 System-level setup:
+
 - Routing
 - Providers (Theme, Router, Global Context)
 
 ### `features/`
+
 Each feature owns its:
+
 - UI (`components/`)
 - Route-level pages (`pages/`)
 - Logic (`hooks/`)
 
 ### `components/`
+
 Reusable, global UI elements:
+
 - Layout components
 - Loaders
 - Shared UI blocks
 
 ### `hooks/`
+
 Reusable React logic:
+
 - Theme state
 - Authentication state
 - Feature-level logic
@@ -145,15 +154,19 @@ Pages are loaded dynamically using `React.lazy` and wrapped with `Suspense`:
 ## Getting Started
 
 ### 1. Install Dependencies
+
 ```bash
 pnpm install
 ```
+
 ### 2. Run Development Server
+
 ```bash
 pnpm run dev
 ```
 
 ### 3. Build for Production
+
 ```bash
 pnpm run build
 ```
