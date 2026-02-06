@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Input } from './input';
+import { Input } from '../input';
 import { Button } from '../button';
 import { Error } from '../error';
+import { EMAIL_REGEX } from '@/utils/regex';
+
 import './index.css';
 import '@/styles/theme.css';
 
@@ -34,8 +36,7 @@ export const Form = ({
     }
 
     if (!error && field.type === 'email') {
-      const emailRegex = /^\S+@\S+\.\S+$/;
-      if (value && !emailRegex.test(value)) {
+      if (value && !EMAIL_REGEX.test(value)) {
         error = 'Invalid email format';
       }
     }
