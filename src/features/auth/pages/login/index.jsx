@@ -1,18 +1,12 @@
-import { Button } from '../../../../components/common/button';
-import { Form } from '../../../../components/common/form';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { LOGIN_FIELDS, DUMMY_USER } from '../../constants/loginConstants';
-import './index.css';
 
-const getActions = () => {
-  return (
-    <>
-      <Button type="button">Back</Button>
-      <Button type="submit">Login</Button>
-    </>
-  );
-};
+import { Form } from '@/components/common/form';
+import {
+  LOGIN_FIELDS,
+  DUMMY_USER,
+} from '@/features/auth/constants/loginConstants';
+import './index.css';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +20,6 @@ export const Login = () => {
 
       toast.success('Login Successfully');
       navigate('/dashboard');
-
     } else {
       toast.error('Invalid email or password');
     }
@@ -36,12 +29,7 @@ export const Login = () => {
     <div className="login-page">
       <div className="login-card">
         <h2 className="login-title">Login</h2>
-        <Form
-          fields={LOGIN_FIELDS}
-          onSubmit={handleLogin}
-          buttonText="Login"
-          //actions={getActions()}
-        />
+        <Form fields={LOGIN_FIELDS} onSubmit={handleLogin} buttonText="Login" />
       </div>
     </div>
   );

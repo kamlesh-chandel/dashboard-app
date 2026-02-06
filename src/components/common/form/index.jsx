@@ -3,7 +3,7 @@ import { Input } from './input';
 import { Button } from '../button';
 import { Error } from '../error';
 import './index.css';
-import '../../../styles/theme.css'
+import '@/styles/theme.css';
 
 export const Form = ({
   fields = [],
@@ -61,7 +61,7 @@ export const Form = ({
     fields.forEach((field) => {
       const value = formData[field.name] || '';
       const error = validateField(field.name, value);
-      
+
       if (error) {
         hasError = true;
         newErrors[field.name] = error;
@@ -93,12 +93,12 @@ export const Form = ({
           type={field.type}
           placeholder={field.placeholder}
           value={formData[field.name] || ''}
-          onChange={(val) => handleChange(field.name, val)}
+          onChange={(event) => handleChange(field.name, event.target.value)}
         />
         <Error>{errors[field.name] || ''}</Error>
       </div>
     ));
-  }
+  };
   return (
     <form className="app-form" onSubmit={handleSubmit}>
       {fieldsList()}
