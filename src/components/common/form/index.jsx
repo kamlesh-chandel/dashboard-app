@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Input } from './input';
 import { Button } from '../button';
+import { Error } from '../error';
 import './index.css';
 import '../../../styles/theme.css'
 
@@ -82,24 +83,21 @@ export const Form = ({
   };
 
   const fieldsList = () => {
-    return (
-      fields.map((field) => (
-        <div className="input-wrapper" key={field.id}>
-          <label htmlFor={field.id}>{field.label}</label>
+    return fields.map((field) => (
+      <div className="input-wrapper" key={field.id}>
+        <label htmlFor={field.id}>{field.label}</label>
 
-          <Input
-            id={field.id}
-            name={field.name}
-            type={field.type}
-            placeholder={field.placeholder}
-            value={formData[field.name] || ''}
-            onChange={(val) => handleChange(field.name, val)}
-          />
-
-          <p className="error-text">{errors[field.name] || ''}</p>
-        </div>
-      ))
-    )
+        <Input
+          id={field.id}
+          name={field.name}
+          type={field.type}
+          placeholder={field.placeholder}
+          value={formData[field.name] || ''}
+          onChange={(val) => handleChange(field.name, val)}
+        />
+        <Error>{errors[field.name] || ''}</Error>
+      </div>
+    ));
   }
   return (
     <form className="app-form" onSubmit={handleSubmit}>

@@ -2,7 +2,7 @@ import { Button } from '../../../../components/common/button';
 import { Form } from '../../../../components/common/form';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { loginFields } from '../../constants/loginFields';
+import { LOGIN_FIELDS, DUMMY_USER } from '../../constants/loginConstants';
 import './index.css';
 
 const getActions = () => {
@@ -19,11 +19,6 @@ export const Login = () => {
 
   const handleLogin = (data) => {
     const { email, password } = data;
-
-    const DUMMY_USER = {
-      email: 'admin@gmail.com',
-      password: '123456',
-    };
 
     if (email === DUMMY_USER.email && password === DUMMY_USER.password) {
       localStorage.setItem('isAuthenticated', 'true');
@@ -42,7 +37,7 @@ export const Login = () => {
       <div className="login-card">
         <h2 className="login-title">Login</h2>
         <Form
-          fields={loginFields}
+          fields={LOGIN_FIELDS}
           onSubmit={handleLogin}
           buttonText="Login"
           //actions={getActions()}

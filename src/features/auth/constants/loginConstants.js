@@ -1,4 +1,4 @@
-export const loginFields = [
+export const LOGIN_FIELDS = [
   {
     id: 'email',
     label: 'Email',
@@ -17,3 +17,8 @@ export const loginFields = [
     minLength: 6,
   },
 ];
+
+export const DUMMY_USER = {
+  email: 'admin@gmail.com',
+  password: '123456',
+};
