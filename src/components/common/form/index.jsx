@@ -58,13 +58,13 @@ export const Form = ({
     let newErrors = {};
     let hasError = false;
 
-    fields.forEach((field) => {
-      const value = formData[field.name] || '';
-      const error = validateField(field.name, value);
+    fields.forEach(({name}) => {
+      const value = formData[name] || '';
+      const error = validateField(name, value);
 
       if (error) {
         hasError = true;
-        newErrors[field.name] = error;
+        newErrors[name] = error;
       }
     });
 
@@ -83,22 +83,23 @@ export const Form = ({
   };
 
   const fieldsList = () => {
-    return fields.map((field) => (
-      <div className="input-wrapper" key={field.id}>
-        <label htmlFor={field.id}>{field.label}</label>
+    return fields.map(({id, label, name, type, placeholder}) => (
+      <div className="input-wrapper" key={id}>
+        <label htmlFor={id}>{label}</label>
 
         <Input
-          id={field.id}
-          name={field.name}
-          type={field.type}
-          placeholder={field.placeholder}
-          value={formData[field.name] || ''}
-          onChange={(event) => handleChange(field.name, event.target.value)}
+          id={id}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          value={formData[name] || ''}
+          onChange={(event) => handleChange(name, event.target.value)}
         />
-        <Error>{errors[field.name] || ''}</Error>
+        <Error>{errors[name] || ''}</Error>
       </div>
     ));
   };
+
   return (
     <form className="app-form" onSubmit={handleSubmit}>
       {fieldsList()}
