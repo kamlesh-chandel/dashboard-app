@@ -1,7 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from '@/features/auth/pages/login';
 import Loader from '@/components/common/Loader';
 import { lazy, Suspense } from 'react';
+import PublicRoute from './PublicRoute';
+import ProtectedRoute from './ProtectedRoute';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 
@@ -10,8 +12,23 @@ export const AppRoutes = () => {
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Suspense>
     </BrowserRouter>
