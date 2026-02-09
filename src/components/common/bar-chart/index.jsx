@@ -1,5 +1,5 @@
 import {
-  ChartJS,
+  Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
