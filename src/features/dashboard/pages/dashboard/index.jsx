@@ -1,11 +1,16 @@
 import Sidebar from '@/components/layout/sidebar';
 import Card from '@/components/common/card';
 import BarChart from '@/components/common/bar-chart';
-import { DASHBOARD_DATA } from '@/features/dashboard/constants/dashboardConstants';
+import { useDashboardData } from '@/hooks/useDashboardData';
+import Loader from '@/components/common/Loader';
+
 import './index.css';
 import '@/styles/theme.css';
 
 const Dashboard = () => {
+  const {DASHBOARD_DATA, loading} = useDashboardData();
+
+  if(loading) return <Loader />;
 
   const getCards = () => {
     return DASHBOARD_DATA.map((data) => (
