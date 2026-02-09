@@ -1,11 +1,18 @@
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/common/button';
-
-import './index.css';
-import '@/styles/theme.css';
+import { Box, Typography, Button, Stack } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const NAV_ITEMS = [
+    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Settings', path: '/settings' },
+  ];
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
@@ -14,21 +21,44 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="sidebar">
-      <h2 className="sidebar-title">Admin Panel</h2>
-      <div className="nav-wrapper">
-        <nav className="sidebar-nav">
-          <a className="nav-item active">Dashboard</a>
-          <a className="nav-item">Settings</a>
-        </nav>
-        <Button
-          style={{ backgroundColor: 'var(--color-error)' }}
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
+    <Box
+      sx={{
+        width: 260,
+        height: '100vh',
+        bgcolor: 'background.paper',
+        borderRight: '1px solid',
+        borderColor: 'divider',
+        p: 3,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+
+      <div>
+        <Typography variant="h5" fontWeight={700} mb={3} ml={1}>
+          Admin Panel
+        </Typography>
+
+        <Stack spacing={1}>
+          {NAV_ITEMS.map((item) => (
+            <Button
+              key={item.path}
+              variant={location.pathname === item.path ? 'contained' : 'white'}
+              onClick={() => handleNavigate(item.path)}
+              fullWidth
+              sx={{ justifyContent: 'flex-start' }}
+            >
+              {item.label}
+            </Button>
+          ))}
+        </Stack>
       </div>
-    </aside>
+
+      <Button variant="contained" color="error" onClick={handleLogout}>
+        Logout
+      </Button>
+    </Box>
   );
 };
 

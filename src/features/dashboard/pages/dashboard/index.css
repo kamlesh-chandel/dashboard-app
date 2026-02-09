@@ -1,7 +1,6 @@
 .dashboard-layout {
   display: flex;
   height: 100vh;
-  background: var(--color-bg);
 }
 
 .dashboard-content {
@@ -12,8 +11,7 @@
 
 .content-header {
   padding: 20px 24px;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 
 .content-body {
@@ -27,8 +25,7 @@
 }
 
 .chart-container {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 20px;
   margin: 10px 0;

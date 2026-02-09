@@ -6,13 +6,14 @@ import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
+const Settings = lazy(() => import('../features/settings/pages/settings'));
 
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
         <Routes>
-        <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
           <Route
             path="/login"
             element={
@@ -26,6 +27,14 @@ export const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
               </ProtectedRoute>
             }
           />

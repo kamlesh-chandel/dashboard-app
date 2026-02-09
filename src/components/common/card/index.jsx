@@ -1,14 +1,26 @@
+import { Card as MUICard, CardContent, Typography } from '@mui/material';
 import './index.css';
-import "@/styles/theme.css";
+import '@/styles/theme.css';
 
 const Card = ({ title, value, subtitle }) => {
   return (
-    <div className="app-card">
-      <div className="card-title">{title}</div>
-      <div className="card-value">{value}</div>
-      <div className="card-subtitle">{subtitle}</div>
-    </div>
+    <MUICard sx={{ borderRadius: 3 }} className="app-card">
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {title}
+        </Typography>
+
+        <Typography variant="h5" fontWeight={700}>
+          {value}
+        </Typography>
+
+        <Typography variant="caption">
+          {subtitle}
+        </Typography>
+      </CardContent>
+    </MUICard>
   );
 };
 
 export default Card;
+

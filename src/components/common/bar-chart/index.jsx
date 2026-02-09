@@ -33,7 +33,7 @@ const BarChart = ({data}) => {
     },
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: true,
       },
       x: {
         grid: {
