@@ -1,9 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from '@/features/auth/pages/login';
 import Loader from '@/components/common/Loader';
-import { lazy, Suspense } from 'react';
-import PublicRoute from './PublicRoute';
-import ProtectedRoute from './ProtectedRoute';
+import PublicRoute from '@/app/PublicRoute';
+import ProtectedRoute from '@/app/ProtectedRoute';
+import { ROUTES } from '@/utils/routes';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 const Settings = lazy(() => import('../features/settings/pages/settings'));
@@ -11,35 +12,33 @@ const Settings = lazy(() => import('../features/settings/pages/settings'));
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="*" element={<Navigate to="/login" replace />} />
+      <Routes>
+
+        <Route element={<PublicRoute />}>
+          <Route path={ROUTES.LOGIN} element={<Login />} />
+        </Route>
+
+        <Route element={<ProtectedRoute />}>
           <Route
-            path="/login"
+            path={ROUTES.DASHBOARD}
             element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
+              <Suspense fallback={<Loader />}>
                 <Dashboard />
-              </ProtectedRoute>
+              </Suspense>
             }
           />
           <Route
-            path="/settings"
+            path={ROUTES.SETTINGS}
             element={
-              <ProtectedRoute>
+              <Suspense fallback={<Loader />}>
                 <Settings />
-              </ProtectedRoute>
+              </Suspense>
             }
           />
-        </Routes>
-      </Suspense>
+        </Route>
+
+        <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
+      </Routes>
     </BrowserRouter>
   );
 };

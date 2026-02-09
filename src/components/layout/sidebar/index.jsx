@@ -1,14 +1,14 @@
-import { Box, Typography, Button, Stack } from '@mui/material';
+import { Box, Typography, Stack } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Button } from '@/components/common/button';
+import { ROUTES, NAV_ITEMS } from '@/utils/routes';
+
+import './index.css';
+import '@/styles/theme.css';
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const NAV_ITEMS = [
-    { label: 'Dashboard', path: '/dashboard' },
-    { label: 'Settings', path: '/settings' },
-  ];
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -17,7 +17,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
-    navigate('/login');
+    navigate(ROUTES.LOGIN);
   };
 
   return (
@@ -43,11 +43,8 @@ const Sidebar = () => {
         <Stack spacing={1}>
           {NAV_ITEMS.map((item) => (
             <Button
-              key={item.path}
-              variant={location.pathname === item.path ? 'contained' : 'white'}
+              variant={location.pathname === item.path ? 'primary' : 'gray'}
               onClick={() => handleNavigate(item.path)}
-              fullWidth
-              sx={{ justifyContent: 'flex-start' }}
             >
               {item.label}
             </Button>
@@ -55,7 +52,7 @@ const Sidebar = () => {
         </Stack>
       </div>
 
-      <Button variant="contained" color="error" onClick={handleLogout}>
+      <Button variant={"outline-danger"} onClick={handleLogout}>
         Logout
       </Button>
     </Box>

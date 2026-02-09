@@ -1,9 +1,9 @@
 import './index.css';
 import '@/styles/theme.css';
 
-export const Button = ({ children, type = 'button', style, onClick }) => {
+export const Button = ({ children,className="", variant="primary", style, ...props }) => {
   return (
-    <button className="app-btn" type={type} style={style} onClick={onClick}>
+    <button className={`app-btn app-btn-${variant} ${className}`} style={style} {...props}>
       {children}
     </button>
   );

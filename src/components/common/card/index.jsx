@@ -4,7 +4,7 @@ import '@/styles/theme.css';
 
 const Card = ({ title, value, subtitle }) => {
   return (
-    <MUICard sx={{ borderRadius: 3 }} className="app-card">
+    <MUICard className="app-card">
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {title}
