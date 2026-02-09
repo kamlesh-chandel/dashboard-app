@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/common/button';
+import { ROUTES } from '@/utils/routes';
 
 import './index.css';
 import '@/styles/theme.css';
@@ -10,7 +11,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
-    navigate('/login');
+    navigate(ROUTES.LOGIN);
   };
 
   return (

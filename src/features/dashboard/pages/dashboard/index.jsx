@@ -8,12 +8,12 @@ import './index.css';
 import '@/styles/theme.css';
 
 const Dashboard = () => {
-  const {DASHBOARD_DATA, loading} = useDashboardData();
+  const {data, isLoading} = useDashboardData();
 
-  if(loading) return <Loader />;
+  if(isLoading) return <Loader />;
 
   const getCards = () => {
-    return DASHBOARD_DATA.map((data) => (
+    return data.map((data) => (
       <Card title={data.label} value={data.value} subtitle={data.subtitle} />
     ));
   };
@@ -31,7 +31,7 @@ const Dashboard = () => {
           <div className="chart-container">
             <h3>Analytics Overview</h3>
             <div className="chart-wrapper">
-              <BarChart data={DASHBOARD_DATA} />
+              <BarChart data={data} />
             </div>
           </div>
         </div>
