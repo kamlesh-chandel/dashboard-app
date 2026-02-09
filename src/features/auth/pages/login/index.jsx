@@ -5,7 +5,7 @@ import { Form } from '@/components/common/form';
 import {
   LOGIN_FIELDS,
   DUMMY_USER,
-} from '@/features/auth/constants/loginConstants';
+} from '@/features/auth/constants/login';
 import './index.css';
 
 export const Login = () => {
