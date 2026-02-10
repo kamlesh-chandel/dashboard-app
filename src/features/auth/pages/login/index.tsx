@@ -6,12 +6,13 @@ import {
   LOGIN_FIELDS,
   DUMMY_USER,
 } from '@/features/auth/constants/login';
+import type { FormDataType } from '@/types/ui.types';
 import './index.css';
 
-export const Login = () => {
+export const Login: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (data) => {
+  const handleLogin = (data: FormDataType) => {
     const { email, password } = data;
 
     if (email === DUMMY_USER.email && password === DUMMY_USER.password) {

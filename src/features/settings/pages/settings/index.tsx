@@ -2,16 +2,18 @@ import Sidebar from '@/components/layout/sidebar';
 import { Typography, Stack, Switch } from '@mui/material';
 import { useContext } from 'react';
 import { ColorModeContext } from '@/theme/ThemeProviderWrapper';
+import type { ColorModeContextType } from '@/types/themeContext.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const Settings = () => {
-  const { toggleTheme, mode } = useContext(ColorModeContext);
+const Settings: React.FC = () => {
+  const context = useContext(ColorModeContext) as ColorModeContextType;
+  const { toggleTheme, mode } = context;
 
-  const hanleToggleTheme = () => {
+  const hanleToggleTheme = (): void => {
     const storedTheme = localStorage.getItem('theme');
-    toggleTheme(storedTheme === 'light' ? 'dark': 'light');
-  }
+    toggleTheme(storedTheme === 'light' ? 'dark' : 'light');
+  };
   return (
     <div className="dashboard-layout">
       <Sidebar />
@@ -21,10 +23,12 @@ const Settings = () => {
           <h1>Settings</h1>
         </div>
         <div className="content-body">
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <Typography variant="body2">{mode === 'dark' ? 'Toggle to Light' : 'Toggle to Dark'}</Typography>
-              <Switch checked={mode === 'dark'} onChange={hanleToggleTheme} />
-            </Stack>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <Typography variant="body2">
+              {mode === 'dark' ? 'Toggle to Light' : 'Toggle to Dark'}
+            </Typography>
+            <Switch checked={mode === 'dark'} onChange={hanleToggleTheme} />
+          </Stack>
         </div>
       </main>
     </div>

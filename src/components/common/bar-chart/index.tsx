@@ -7,17 +7,18 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import type { BarChartProps } from '@/types/ui.types';
 import "@/styles/theme.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const BarChart = ({data}) => {
+const BarChart: React.FC<BarChartProps> = ({ data }) => {
   const chartData = {
     labels: data.map((item) => item.label),
     datasets: [
       {
         data: data.map((item) => item.value),
-        backgroundColor: ['#4f46e5', '#22c55e', '#f59e0b'],//barchart take color directly.
+        backgroundColor: ['#4f46e5', '#22c55e', '#f59e0b'], //barchart take color directly.
         borderRadius: 6,
         barThickness: 50,
       },
