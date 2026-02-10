@@ -7,9 +7,10 @@
   font-weight: 500;
   font-size: 15px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.app-btn-primary{
+.app-btn-primary {
   background: var(--color-primary);
   color: var(--color-surface);
 }
@@ -35,3 +36,4 @@
 .app-btn-gray{
   background: var(--color-gray);
 }
+

@@ -1,9 +1,9 @@
-import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from '@/features/auth/pages/login';
 import Loader from '@/components/common/Loader';
-import PublicRoute from '@/app/PublicRoute';
-import ProtectedRoute from '@/app/ProtectedRoute';
+import { lazy, Suspense } from 'react';
+import PublicRoute from './PublicRoute';
+import ProtectedRoute from './ProtectedRoute';
 import { ROUTES } from '@/utils/routes';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));

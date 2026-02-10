@@ -7,17 +7,17 @@ const fetchDashboardApi = async () => {
 
 export const useDashboardData = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetchDashboardApi();
-      setData(res["cards"]);
-      setLoading(false);
+      setData(res['cards']);
+      setIsLoading(false);
     };
 
     fetchData();
   }, []);
 
-  return { DASHBOARD_DATA: data, loading };
+  return { data, isLoading };
 };
