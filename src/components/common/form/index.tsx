@@ -3,20 +3,22 @@ import { Input } from '../input';
 import { Button } from '../button';
 import { Error } from '../error';
 import { EMAIL_REGEX } from '@/utils/regex';
+import type { FormProps, FormDataType, FormErrorsType } from '@/types/ui.types';
 
 import './index.css';
 import '@/styles/theme.css';
 
-export const Form = ({
+
+export const Form: React.FC<FormProps> = ({
   fields = [],
   onSubmit,
   buttonText = 'Submit',
   actions,
 }) => {
-  const [formData, setFormData] = useState({});
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState<FormDataType>({});
+  const [errors, setErrors] = useState<FormErrorsType>({});
 
-  const handleChange = (name, value) => {
+  const handleChange = (name: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -25,7 +27,7 @@ export const Form = ({
     validateField(name, value);
   };
 
-  const validateField = (name, value) => {
+  const validateField = (name: string, value: string) => {
     const field = fields.find((field) => field.name === name);
     let error = '';
 
@@ -56,10 +58,10 @@ export const Form = ({
   };
 
   const validateAll = () => {
-    let newErrors = {};
+    const newErrors: FormErrorsType = {};
     let hasError = false;
 
-    fields.forEach(({name}) => {
+    fields.forEach(({ name }) => {
       const value = formData[name] || '';
       const error = validateField(name, value);
 
@@ -73,7 +75,7 @@ export const Form = ({
     return !hasError;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (!validateAll()) return;
@@ -84,7 +86,7 @@ export const Form = ({
   };
 
   const fieldsList = () => {
-    return fields.map(({id, label, name, type, placeholder}) => (
+    return fields.map(({ id, label, name, type, placeholder }) => (
       <div className="input-wrapper" key={id}>
         <label htmlFor={id}>{label}</label>
 

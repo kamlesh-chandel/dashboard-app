@@ -19,21 +19,21 @@ import { ROUTES, NAV_ITEMS } from '@/utils/routes';
 import './index.css';
 import '@/styles/theme.css';
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleNavigate = (path) => {
+  const handleNavigate = (path: string):void => {
     navigate(path);
     setOpen(false);
   };
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
     navigate(ROUTES.LOGIN);

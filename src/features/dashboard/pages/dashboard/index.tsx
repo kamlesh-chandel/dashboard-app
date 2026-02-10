@@ -7,13 +7,13 @@ import Loader from '@/components/common/Loader';
 import './index.css';
 import '@/styles/theme.css';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const {data, isLoading} = useDashboardData();
 
   if(isLoading) return <Loader />;
 
   const getCards = () => {
-    return data.map((data) => (
+    return data?.map((data) => (
       <Card title={data.label} value={data.value} subtitle={data.subtitle} />
     ));
   };
