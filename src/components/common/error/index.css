@@ -1,0 +1,6 @@
+.app-error {
+  min-height: 18px;
+  font-size: 12px;
+  color: var(--color-error);
+  margin: 0;
+}
