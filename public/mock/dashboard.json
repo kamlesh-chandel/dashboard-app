@@ -1,0 +1,7 @@
+{
+  "cards": [
+    { "label": "Users", "value": 150, "subtitle": "+12% this week" },
+    { "label": "Revenue", "value": 360, "subtitle": "+8% growth" },
+    { "label": "Sessions", "value": 200, "subtitle": "Live now" }
+  ]
+}

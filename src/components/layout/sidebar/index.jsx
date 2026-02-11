@@ -1,8 +1,19 @@
-import {Button} from "@/components/common/button"
-import '@/styles/theme.css';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/common/button';
+import { ROUTES } from '@/utils/routes';
+
 import './index.css';
+import '@/styles/theme.css';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user');
+    navigate(ROUTES.LOGIN);
+  };
+
   return (
     <aside className="sidebar flex-col">
       <h2 className="sidebar-title">Admin Panel</h2>
@@ -11,7 +22,7 @@ const Sidebar = () => {
           <a className="nav-item active">Dashboard</a>
           <a className="nav-item">Settings</a>
         </nav>
-        <Button varient="danger">
+        <Button varient="danger" onClick={handleLogout}>
           Logout
         </Button>
       </div>

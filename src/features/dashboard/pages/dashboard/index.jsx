@@ -1,14 +1,19 @@
 import Sidebar from '@/components/layout/sidebar';
 import Card from '@/components/common/card';
 import BarChart from '@/components/common/bar-chart';
-import { DASHBOARD_DATA } from '@/features/dashboard/constants/dashboardConstants';
+import { useDashboardData } from '@/hooks/useDashboardData';
+import Loader from '@/components/common/Loader';
+
 import './index.css';
 import '@/styles/theme.css';
 
 const Dashboard = () => {
+  const {data, isLoading} = useDashboardData();
+
+  if(isLoading) return <Loader />;
 
   const getCards = () => {
-    return DASHBOARD_DATA.map((data) => (
+    return data.map((data) => (
       <Card title={data.label} value={data.value} subtitle={data.subtitle} />
     ));
   };
@@ -26,7 +31,7 @@ const Dashboard = () => {
           <div className="chart-container">
             <h3>Analytics Overview</h3>
             <div className="chart-wrapper">
-              <BarChart data={DASHBOARD_DATA} />
+              <BarChart data={data} />
             </div>
           </div>
         </div>
