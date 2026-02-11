@@ -6,7 +6,7 @@ export const getTheme = (mode: ThemeMode): Theme =>
     palette: {
       mode,
       primary: {
-        main: '#4f46e5',
+        main: '#4f46e5',//mui does not support constant colors
       },
     },
   });

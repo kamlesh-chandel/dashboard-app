@@ -1,4 +1,4 @@
-import type { LoginField, DummyUser } from '@/types/authForm.types';
+import type { LoginField, DummyUser } from '@/types/auth.types';
 
 export const LOGIN_FIELDS: LoginField[] = [
   {

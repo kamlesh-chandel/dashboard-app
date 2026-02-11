@@ -2,7 +2,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { useMemo, useState, createContext } from 'react';
 import { getTheme } from '@/theme/theme';
 import type { ThemeMode } from '@/types/theme.types';
-import type { ColorModeContextType } from '@/types/themeContext.types';
+import type { ColorModeContextType } from '@/types/theme.types';
 
 export const ColorModeContext = createContext<ColorModeContextType | undefined>(
   undefined
