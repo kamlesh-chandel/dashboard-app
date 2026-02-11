@@ -10,7 +10,7 @@ const Settings: React.FC = () => {
   const context = useContext(ColorModeContext) as ColorModeContextType;
   const { toggleTheme, mode } = context;
 
-  const hanleToggleTheme = (): void => {
+  const handleToggleTheme = (): void => {
     const storedTheme = localStorage.getItem('theme');
     toggleTheme(storedTheme === 'light' ? 'dark' : 'light');
   };
@@ -27,7 +27,7 @@ const Settings: React.FC = () => {
             <Typography variant="body2">
               {mode === 'dark' ? 'Toggle to Light' : 'Toggle to Dark'}
             </Typography>
-            <Switch checked={mode === 'dark'} onChange={hanleToggleTheme} />
+            <Switch checked={mode === 'dark'} onChange={handleToggleTheme} />
           </Stack>
         </div>
       </main>
