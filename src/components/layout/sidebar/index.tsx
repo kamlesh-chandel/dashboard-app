@@ -48,15 +48,17 @@ const Sidebar: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+
       }}
     >
       <div>
         <Typography
           variant="h5"
           fontWeight={800}
+          mt={5}
           mb={3}
-          ml={1}
-          sx={{ color: 'primary.main', letterSpacing: 2 }}
+          ml={3}
+          sx={{ color: 'var(--color-heading)', letterSpacing: 2 }}
         >
           Admin Panel
         </Typography>
@@ -107,14 +109,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <Box
-      sx={{
-        width: 260,
-        height: '100vh',
-        backdropFilter: 'blur(18px)',
-        background: 'rgba(15,23,42,0.6)',
-        borderRight: '1px solid rgba(255,255,255,0.08)',
-        boxShadow: '0 0 40px rgba(124,58,237,0.15)',
-      }}
+      className="sidebar"
     >
       {sidebarContent}
     </Box>

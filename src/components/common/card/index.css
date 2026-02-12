@@ -6,16 +6,9 @@
   display: flex;
   align-items: center;
   padding: 0px 20px;
-
-  /* shadow + animation */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: all 0.25s ease;
+  transition: all 5s ease;
 }
 
 .app-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-4px);
-
-  /* stronger shadow on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
 }

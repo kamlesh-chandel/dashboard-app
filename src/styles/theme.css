@@ -10,25 +10,24 @@
   --font-family: 'Orbitron', 'Inter', sans-serif;
 }
 
-/* DARK */
 body[data-theme='dark'] {
   --color-bg: #0f1117;
   --color-surface: #181c24;
   --color-surface-2: #1f2430;
   --color-text: #e6edf3;
   --color-border: #2a3142;
+  --color-heading: #00e0ff;
 }
 
-/* LIGHT (gaming light) */
 body[data-theme='light'] {
   --color-bg: #f4f6fb;
   --color-surface: #ffffff;
   --color-surface-2: #f1f5f9;
   --color-text: #0b1220;
   --color-border: #e5e7eb;
+  --color-heading: rgb(23, 126, 149);
 }
 
-/* reset */
 *{
   margin:0;
   padding:0;
