@@ -1,8 +1,10 @@
 import { Card as MUICard, CardContent, Typography } from '@mui/material';
+import type {CardProps} from '@/types/ui.types'
+
 import './index.css';
 import '@/styles/theme.css';
 
-const Card = ({ title, value, subtitle }) => {
+const Card: React.FC<CardProps> = ({ title, value, subtitle }) => {
   return (
     <MUICard className="app-card">
       <CardContent>
