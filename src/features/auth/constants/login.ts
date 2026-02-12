@@ -1,4 +1,6 @@
-export const LOGIN_FIELDS = [
+import type { LoginField, DummyUser } from '@/types/auth.types';
+
+export const LOGIN_FIELDS: LoginField[] = [
   {
     id: 'email',
     label: 'Email',
@@ -18,7 +20,7 @@ export const LOGIN_FIELDS = [
   },
 ];
 
-export const DUMMY_USER = {
+export const DUMMY_USER: DummyUser = {
   email: 'admin@gmail.com',
   password: '123456',
 };
