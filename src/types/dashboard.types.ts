@@ -1,7 +1,8 @@
 export interface DashboardCard {
   id?: string | number;
-  title?: string;
+  label?: string;
   value?: string | number;
+  subtitle?: string;
   [key: string]: unknown;
 }
 
@@ -10,6 +11,6 @@ export interface DashboardResponse {
 }
 
 export interface UseDashboardReturn {
-  data: DashboardCard[] | null;
+  data: DashboardCard[];
   isLoading: boolean;
 }

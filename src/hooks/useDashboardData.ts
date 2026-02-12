@@ -11,7 +11,7 @@ const fetchDashboardApi = async (): Promise<DashboardResponse> => {
 };
 
 export const useDashboardData = (): UseDashboardReturn => {
-  const [data, setData] = useState<DashboardCard[] | null>(null);
+  const [data, setData] = useState<DashboardCard[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {

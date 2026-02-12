@@ -12,6 +12,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Button } from '@/components/common/button';
 import { ROUTES, NAV_ITEMS } from '@/utils/routes';
@@ -28,7 +29,7 @@ const Sidebar: React.FC = () => {
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleNavigate = (path: string):void => {
+  const handleNavigate = (path: string): void => {
     navigate(path);
     setOpen(false);
   };
@@ -43,7 +44,6 @@ const Sidebar: React.FC = () => {
     <Box
       sx={{
         height: '100%',
-        bgcolor: 'background.paper',
         p: 3,
         display: 'flex',
         flexDirection: 'column',
@@ -51,7 +51,13 @@ const Sidebar: React.FC = () => {
       }}
     >
       <div>
-        <Typography variant="h5" fontWeight={700} mb={3} ml={1}>
+        <Typography
+          variant="h5"
+          fontWeight={800}
+          mb={3}
+          ml={1}
+          sx={{ color: 'primary.main', letterSpacing: 2 }}
+        >
           Admin Panel
         </Typography>
 
@@ -62,6 +68,7 @@ const Sidebar: React.FC = () => {
               variant={location.pathname === item.path ? 'primary' : 'gray'}
               onClick={() => handleNavigate(item.path)}
             >
+              {item.icon}
               {item.label}
             </Button>
           ))}
@@ -69,6 +76,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <Button variant="outline-danger" onClick={handleLogout}>
+        <LogoutIcon />
         Logout
       </Button>
     </Box>
@@ -102,8 +110,10 @@ const Sidebar: React.FC = () => {
       sx={{
         width: 260,
         height: '100vh',
-        borderRight: '1px solid',
-        borderColor: 'divider',
+        backdropFilter: 'blur(18px)',
+        background: 'rgba(15,23,42,0.6)',
+        borderRight: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 0 40px rgba(124,58,237,0.15)',
       }}
     >
       {sidebarContent}

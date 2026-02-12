@@ -1,12 +1,8 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { useMemo, useState, createContext } from 'react';
+import { useMemo, useState } from 'react';
 import { getTheme } from '@/theme/theme';
 import type { ThemeMode } from '@/types/theme.types';
-import type { ColorModeContextType } from '@/types/themeContext.types';
-
-export const ColorModeContext = createContext<ColorModeContextType | undefined>(
-  undefined
-);
+import { ColorModeContext } from '@/context/ColorModeContext';
 
 const STORED_THEME = 'theme';
 
@@ -25,6 +21,10 @@ const ThemeProviderWrapper: React.FC<Props> = ({ children }) => {
   };
 
   const theme = useMemo(() => getTheme(mode), [mode]);
+  useMemo(() => {
+    document.body.setAttribute('data-theme', mode);
+    getTheme(mode);
+  }, [mode]);
 
   return (
     <ColorModeContext.Provider value={{ mode, toggleTheme }}>

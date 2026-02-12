@@ -8,7 +8,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import type { BarChartProps } from '@/types/ui.types';
-import "@/styles/theme.css";
+import '@/styles/theme.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 

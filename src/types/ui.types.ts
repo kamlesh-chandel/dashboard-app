@@ -22,7 +22,7 @@ export interface InputProps {
 }
 
 export interface CardProps {
-  title?: string;
+  title: string;
   value?: number | string;
   subtitle?: string;
 }

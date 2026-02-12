@@ -1,6 +1,8 @@
-.app-error {
-  min-height: 18px;
-  font-size: 12px;
-  color: var(--color-error);
-  margin: 0;
+.app-error{
+  min-height:18px;
+  font-size:12px;
+  font-weight:500;
+  color: var(--color-danger);
+  letter-spacing:.2px;
+  margin-top:2px;
 }

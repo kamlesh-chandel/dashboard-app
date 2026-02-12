@@ -6,11 +6,7 @@ import type { authCheck } from '@/types/auth.types';
 const checkAuth = isAuthenticated as authCheck;
 
 const ProtectedRoute = () => {
-  return checkAuth() ? (
-    <Outlet />
-  ) : (
-    <Navigate to={ROUTES.LOGIN} replace />
-  );
+  return checkAuth() ? <Outlet /> : <Navigate to={ROUTES.LOGIN} replace />;
 };
 
 export default ProtectedRoute;

@@ -1,24 +1,21 @@
 .app-card {
-  min-height: 200px;
-  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border: 0.5px solid var(--color-border);
-  border-radius: var(--radius-lg) !important;
+  align-items: center;
+  padding: 0px 20px;
+
+  /* shadow + animation */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
 }
 
-.card-title {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
+.app-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
 
-.card-value {
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.card-subtitle {
-  font-size: 13px;
-  color: var(--color-primary);
+  /* stronger shadow on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
