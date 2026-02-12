@@ -3,7 +3,11 @@ import { isAuthenticated } from '@/utils/auth';
 import { ROUTES } from '@/utils/routes';
 
 const PublicRoute = () => {
-  return !isAuthenticated() ? <Outlet /> : <Navigate to={ROUTES.DASHBOARD} replace />
+  return isAuthenticated() ? (
+    <Navigate to={ROUTES.DASHBOARD} replace />
+  ) : (
+    <Outlet />
+  );
 };
 
 export default PublicRoute;

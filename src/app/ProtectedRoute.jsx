@@ -3,7 +3,11 @@ import { isAuthenticated } from '@/utils/auth';
 import { ROUTES } from '@/utils/routes';
 
 const ProtectedRoute = () => {
-   return isAuthenticated() ? <Outlet /> : <Navigate to={ROUTES.LOGIN} replace />;
+  return isAuthenticated() ? (
+    <Outlet />
+  ) : (
+    <Navigate to={ROUTES.LOGIN} replace />
+  );
 };
 
 export default ProtectedRoute;

@@ -7,11 +7,13 @@ import ProtectedRoute from './ProtectedRoute';
 import { ROUTES } from '@/utils/routes';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
+const Settings = lazy(() => import('../features/settings/pages/settings'));
 
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route element={<PublicRoute />}>
           <Route path={ROUTES.LOGIN} element={<Login />} />
         </Route>
@@ -22,6 +24,14 @@ export const AppRoutes = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.SETTINGS}
+            element={
+              <Suspense fallback={<Loader />}>
+                <Settings />
               </Suspense>
             }
           />
