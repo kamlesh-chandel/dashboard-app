@@ -1,1 +1,6 @@
-npx lint-staged
+echo "Running ESLint..."
+npm run lint
+
+echo "Formatting with Prettier..."
+npm run format
+

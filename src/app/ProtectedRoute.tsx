@@ -4,7 +4,7 @@ import { ROUTES } from '@/utils/routes';
 import type { authCheck } from '@/types/auth.types';
 
 const checkAuth = isAuthenticated as authCheck;
-
+const a = 10;
 const ProtectedRoute = () => {
   return checkAuth() ? (
     <Outlet />
