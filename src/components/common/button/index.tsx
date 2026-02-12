@@ -1,14 +1,21 @@
+import type { ButtonProps } from '@/types/ui.types';
+
 import './index.css';
 import '@/styles/theme.css';
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
   children,
   className = '',
-  varient = 'primary',
+  variant = 'primary',
+  style,
   ...props
 }) => {
   return (
-    <button className={`app-btn app-btn-${varient} ${className}`} {...props}>
+    <button
+      className={`app-btn app-btn-${variant} ${className}`}
+      style={style}
+      {...props}
+    >
       {children}
     </button>
   );
