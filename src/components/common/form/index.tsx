@@ -8,7 +8,6 @@ import type { FormProps, FormDataType, FormErrorsType } from '@/types/ui.types';
 import './index.css';
 import '@/styles/theme.css';
 
-
 export const Form: React.FC<FormProps> = ({
   fields = [],
   onSubmit,

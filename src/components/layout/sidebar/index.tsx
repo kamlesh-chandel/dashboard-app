@@ -48,7 +48,6 @@ const Sidebar: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-
       }}
     >
       <div>
@@ -107,13 +106,7 @@ const Sidebar: React.FC = () => {
     );
   }
 
-  return (
-    <Box
-      className="sidebar"
-    >
-      {sidebarContent}
-    </Box>
-  );
+  return <Box className="sidebar">{sidebarContent}</Box>;
 };
 
 export default Sidebar;
