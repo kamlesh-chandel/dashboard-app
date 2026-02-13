@@ -8,7 +8,7 @@ import { ROUTES } from '@/utils/routes';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 const Settings = lazy(() => import('../features/settings/pages/settings'));
-const Users = lazy(() => import("../features/dashboard/pages/users"));
+const Users = lazy(() => import('../features/dashboard/pages/users'));
 
 export const AppRoutes: React.FC = () => {
   return (

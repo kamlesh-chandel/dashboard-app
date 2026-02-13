@@ -2,7 +2,7 @@ import type { PageHeaderProps } from '@/types/ui.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const PageHeader:React.FC<PageHeaderProps> = ({title}) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   const storedUser = localStorage.getItem('user');
 
   const userEmail = storedUser

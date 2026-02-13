@@ -5,16 +5,13 @@ import './index.css';
 import '@/styles/theme.css';
 
 const Dashboard: React.FC = () => {
-
   return (
     <div className="dashboard-layout">
       <Sidebar />
 
       <main className="dashboard-content">
         <PageHeader title="Users" />
-        <div>
-          Table
-        </div>
+        <div>Table</div>
       </main>
     </div>
   );

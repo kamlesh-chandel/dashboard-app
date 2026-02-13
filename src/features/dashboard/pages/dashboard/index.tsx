@@ -17,11 +17,16 @@ const Dashboard: React.FC = () => {
 
   const handleUsersClick = () => {
     navigate('/dashboard/users');
-  }
+  };
 
   const getCards = () => {
     return data?.map(({ label, value, subtitle }) => (
-      <Card title={label ?? ''} value={value} subtitle={subtitle} onClick={label === "Users" ? handleUsersClick : undefined}/>
+      <Card
+        title={label ?? ''}
+        value={value}
+        subtitle={subtitle}
+        onClick={label === 'Users' ? handleUsersClick : undefined}
+      />
     ));
   };
 

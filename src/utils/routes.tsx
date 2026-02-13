@@ -4,7 +4,7 @@ export const ROUTES: RoutesType = {
   LOGIN: '/login',
   DASHBOARD: '/dashboard',
   SETTINGS: '/settings',
-  USERS: '/dashboard/users'
+  USERS: '/dashboard/users',
 };
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
