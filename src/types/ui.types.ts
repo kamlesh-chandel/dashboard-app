@@ -59,3 +59,9 @@ export interface BarChartProps {
 export interface PageHeaderProps {
   title?: string;
 }
+
+export interface tableColumnProps {
+  id: 'name' | 'email' | 'phone' | 'assignedGames' | 'actions';
+  label: string;
+  align?: 'center';
+}
