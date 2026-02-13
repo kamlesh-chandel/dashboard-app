@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,6 +17,7 @@
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "chart.js": "^4.5.1",
+    "husky": "^9.1.7",
     "react": "19.2.0",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "19.2.0",
