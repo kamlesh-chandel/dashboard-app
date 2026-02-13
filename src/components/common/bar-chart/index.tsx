@@ -8,7 +8,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import type { BarChartProps } from '@/types/ui.types';
-import '@/styles/theme.css';
+import { COLORS } from '@/theme/colors';
+import "@/styles/theme.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -18,7 +19,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
     datasets: [
       {
         data: data.map((item) => item.value),
-        backgroundColor: ['#4f46e5', '#22c55e', '#f59e0b'], //barchart take color directly.
+        backgroundColor: [COLORS.primary, COLORS.success, COLORS.warning],
         borderRadius: 6,
         barThickness: 50,
       },

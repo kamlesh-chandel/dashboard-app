@@ -2,7 +2,7 @@ import Sidebar from '@/components/layout/sidebar';
 import { Typography, Stack, Switch } from '@mui/material';
 import { useContext } from 'react';
 import { ColorModeContext } from '@/context/ColorModeContext';
-import type { ColorModeContextType } from '@/types/themeContext.types';
+import type { ColorModeContextType } from '@/types/theme.types';
 import './index.css';
 import '@/styles/theme.css';
 

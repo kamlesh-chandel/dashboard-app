@@ -4,7 +4,7 @@ import type {
   CSSProperties,
   ReactNode,
 } from 'react';
-import type { LoginField } from '@/types/authForm.types';
+import type { LoginField } from '@/types/auth.types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
