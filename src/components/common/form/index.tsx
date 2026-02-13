@@ -92,7 +92,6 @@ export const Form: React.FC<FormProps> = ({
 
         <Input
           id={id}
-          name={name}
           type={type}
           placeholder={placeholder}
           value={formData[name] || ''}
