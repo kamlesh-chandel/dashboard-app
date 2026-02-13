@@ -1,26 +1,27 @@
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '@/components/layout/sidebar';
 import Card from '@/components/common/card';
 import BarChart from '@/components/common/bar-chart';
 import { useDashboardData } from '@/hooks/useDashboardData';
 import Loader from '@/components/common/Loader';
+import PageHeader from '@/components/layout/page-header';
 
 import './index.css';
 import '@/styles/theme.css';
 
 const Dashboard: React.FC = () => {
   const { data, isLoading } = useDashboardData();
-
-  const storedUser = localStorage.getItem('user');
-
-  const userEmail = storedUser
-    ? JSON.parse(storedUser)?.email || 'User'
-    : 'User';
+  const navigate = useNavigate();
 
   if (isLoading) return <Loader />;
 
+  const handleUsersClick = () => {
+    navigate('/dashboard/users');
+  }
+
   const getCards = () => {
     return data?.map(({ label, value, subtitle }) => (
-      <Card title={label ?? ''} value={value} subtitle={subtitle} />
+      <Card title={label ?? ''} value={value} subtitle={subtitle} onClick={label === "Users" ? handleUsersClick : undefined}/>
     ));
   };
 
@@ -37,12 +38,7 @@ const Dashboard: React.FC = () => {
       <Sidebar />
 
       <main className="dashboard-content">
-        <div className="dashboard-heading-wrapper">
-          <h1>Dashboard</h1>
-          <div>
-            Welcome, <span className="user-email">{userEmail}</span>
-          </div>
-        </div>
+        <PageHeader title="Dashboard" />
         <div className="content-body">
           <div className="cards-wrapper">{getCards()}</div>
           <div className="chart-container">

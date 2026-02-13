@@ -25,6 +25,7 @@ export interface CardProps {
   title: string;
   value?: number | string;
   subtitle?: string;
+  onClick?: () => void;
 }
 
 export interface FormDataType {
@@ -53,4 +54,8 @@ export interface BarChartItem {
 
 export interface BarChartProps {
   data: BarChartItem[];
+}
+
+export interface PageHeaderProps{
+  title?: string;
 }

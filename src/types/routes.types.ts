@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type RouteKey = 'LOGIN' | 'DASHBOARD' | 'SETTINGS';
+export type RouteKey = 'LOGIN' | 'DASHBOARD' | 'SETTINGS' | 'USERS';
 
 export type RoutesType = Record<RouteKey, string>;
 

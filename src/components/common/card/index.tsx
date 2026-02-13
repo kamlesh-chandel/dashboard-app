@@ -5,10 +5,10 @@ import { ICON_MAP } from '@/features/dashboard/constants/dashboard';
 import './index.css';
 import '@/styles/theme.css';
 
-const Card: React.FC<CardProps> = ({ title, value, subtitle }) => {
+const Card: React.FC<CardProps> = ({ title, value, subtitle, onClick }) => {
   const Icon = title ? ICON_MAP[title as keyof typeof ICON_MAP] : null;
   return (
-    <MUICard className="app-card">
+    <MUICard className="app-card" onClick={onClick}>
       {Icon && <Icon sx={{ fontSize: 34 }} />}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
