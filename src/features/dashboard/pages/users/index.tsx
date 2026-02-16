@@ -15,7 +15,7 @@ const Users: React.FC = () => {
   const handleSubmit = (data: FormDataType) => {
     setOpen(false);
     console.log(data); //will integrate api later
-  }
+  };
 
   return (
     <div className="dashboard-layout">
@@ -32,7 +32,12 @@ const Users: React.FC = () => {
           <UsersTable />
         </div>
       </main>
-      <UserDialog open={open} onClose={() => setOpen(false)} onSubmit={handleSubmit} mode="add" />
+      <UserDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        onSubmit={handleSubmit}
+        mode="add"
+      />
     </div>
   );
 };

@@ -13,7 +13,6 @@ const UserDialog: React.FC<UserDialogProps> = ({
   onSubmit,
   mode = 'add',
 }) => {
-
   return (
     <Dialog
       open={open}

@@ -94,56 +94,55 @@ export const Form: React.FC<FormProps> = ({
   };
 
   // render fields
-const fieldsList = () => {
-  return fields.map(({ id, label, name, type, placeholder, options }) => (
-    <div className="input-wrapper" key={id}>
-      <label htmlFor={id}>{label}</label>
+  const fieldsList = () => {
+    return fields.map(({ id, label, name, type, placeholder, options }) => (
+      <div className="input-wrapper" key={id}>
+        <label htmlFor={id}>{label}</label>
 
-      {/* TEXT INPUTS */}
-      {(type === 'text' ||
-        type === 'email' ||
-        type === 'password' ||
-        type === 'number') && (
-        <Input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          value={(formData[name] as string) || ''}
-          onChange={(e) => handleChange(name, e.target.value)}
-        />
-      )}
+        {/* TEXT INPUTS */}
+        {(type === 'text' ||
+          type === 'email' ||
+          type === 'password' ||
+          type === 'number') && (
+          <Input
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
+        )}
 
-      {/* SINGLE SELECT */}
-      {type === 'select' && (
-        <select
-          id={id}
-          value={(formData[name] as string) || ''}
-          onChange={(e) => handleChange(name, e.target.value)}
-        >
-          <option value="">Select</option>
-          {options?.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      )}
+        {/* SINGLE SELECT */}
+        {type === 'select' && (
+          <select
+            id={id}
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          >
+            <option value="">Select</option>
+            {options?.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        )}
 
-      {/* MULTI SELECT CHIP */}
-      {type === 'multiselect' && (
-        <MultipleSelectChip
-          label={label}
-          value={(formData[name] as string[]) || []}
-          options={options}
-          onChange={(val) => handleChange(name, val)}
-        />
-      )}
+        {/* MULTI SELECT CHIP */}
+        {type === 'multiselect' && (
+          <MultipleSelectChip
+            label={label}
+            value={(formData[name] as string[]) || []}
+            options={options}
+            onChange={(val) => handleChange(name, val)}
+          />
+        )}
 
-      <Error>{errors[name] || ''}</Error>
-    </div>
-  ));
-};
-
+        <Error>{errors[name] || ''}</Error>
+      </div>
+    ));
+  };
 
   return (
     <form className="app-form" onSubmit={handleSubmit}>

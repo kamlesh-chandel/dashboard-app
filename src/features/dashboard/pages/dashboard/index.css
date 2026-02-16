@@ -38,9 +38,9 @@
 
 @media (max-width: 768px) {
   .chart-container {
-  height: 250px;
-}
-.chart-container h3 {
-  margin-bottom: 20px;
-}
+    height: 250px;
+  }
+  .chart-container h3 {
+    margin-bottom: 20px;
+  }
 }
