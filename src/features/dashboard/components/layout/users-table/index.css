@@ -1,0 +1,5 @@
+.table-actions {
+  color: var(--color-blue);
+  font-weight: 600;
+  cursor: pointer;
+}

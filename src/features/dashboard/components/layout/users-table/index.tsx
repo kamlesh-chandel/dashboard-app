@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { tableColumns, users } from '@/features/dashboard/constants/users';
+import UserDialog from '../user-dialog';
+import type { FormDataType } from '@/types/ui.types';
 
 import './index.css';
 import '@/styles/theme.css';
@@ -15,6 +17,12 @@ import '@/styles/theme.css';
 const UsersTable: React.FC = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [open, setOpen] = React.useState(false);
+
+  const handleSubmit = (data: FormDataType) => {
+    setOpen(false);
+    console.log(data); //will integrate api later
+  };
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -58,7 +66,12 @@ const UsersTable: React.FC = () => {
             }
 
             if (column.id === 'actions') {
-              value = <div>Edit | Delete</div>;
+              value = (
+                <div className="table-actions">
+                  {' '}
+                  <span onClick={() => setOpen(true)}>Edit</span> {' | '} Delete
+                </div>
+              );
             }
 
             return (
@@ -73,7 +86,14 @@ const UsersTable: React.FC = () => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 580 }}>
+      <TableContainer
+        sx={{
+          maxHeight: {
+            xs: 330,
+            md: 580,
+          },
+        }}
+      >
         <Table stickyHeader aria-label="users table">
           <TableHead>
             <TableRow>{getColumnNames()}</TableRow>
@@ -91,6 +111,12 @@ const UsersTable: React.FC = () => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+      <UserDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        onSubmit={handleSubmit}
+        mode="edit"
       />
     </Paper>
   );

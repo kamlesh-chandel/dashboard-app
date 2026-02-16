@@ -21,3 +21,19 @@
   font-weight: 600;
   color: var(--color-heading);
 }
+
+@media (max-width: 768px) {
+  .dashboard-heading-wrapper {
+    margin-top: 60px;
+    padding: 0px 8px;
+  }
+
+  .dashboard-heading-wrapper h2 {
+    font-size: 18px;
+  }
+
+  .user-email {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

@@ -5,9 +5,10 @@
   --radius-md: 10px;
   --radius-lg: 16px;
 
-  --color-error: rgb(213, 38, 38);
+  --color-error: rgb(225, 36, 36);
   --color-btn: #f27577;
 
+  --color-blue: #4f46e5;
   --font-family: 'Orbitron', 'Inter', sans-serif;
 }
 

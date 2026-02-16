@@ -12,3 +12,12 @@
 .app-card:hover {
   transform: translateY(-3px);
 }
+
+@media (max-width: 768px) {
+  .app-card {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0px;
+    height: 180px;
+  }
+}

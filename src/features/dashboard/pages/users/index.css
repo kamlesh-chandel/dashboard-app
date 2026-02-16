@@ -26,3 +26,9 @@
   width: 100px;
   height: 50px;
 }
+
+@media (max-width: 768px) {
+  .table-button-wrapper {
+  margin-top: 20px;
+}
+}
