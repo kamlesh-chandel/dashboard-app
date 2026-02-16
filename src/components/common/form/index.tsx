@@ -18,7 +18,6 @@ export const Form: React.FC<FormProps> = ({
   const [formData, setFormData] = useState<FormDataType>({});
   const [errors, setErrors] = useState<FormErrorsType>({});
 
-  // normal input change
   const handleChange = (name: string, value: string | string[]) => {
     setFormData((prev) => ({
       ...prev,
@@ -93,13 +92,11 @@ export const Form: React.FC<FormProps> = ({
     setErrors({});
   };
 
-  // render fields
   const fieldsList = () => {
     return fields.map(({ id, label, name, type, placeholder, options }) => (
       <div className="input-wrapper" key={id}>
         <label htmlFor={id}>{label}</label>
 
-        {/* TEXT INPUTS */}
         {(type === 'text' ||
           type === 'email' ||
           type === 'password' ||
@@ -113,7 +110,6 @@ export const Form: React.FC<FormProps> = ({
           />
         )}
 
-        {/* SINGLE SELECT */}
         {type === 'select' && (
           <select
             id={id}
@@ -129,7 +125,6 @@ export const Form: React.FC<FormProps> = ({
           </select>
         )}
 
-        {/* MULTI SELECT CHIP */}
         {type === 'multiselect' && (
           <MultipleSelectChip
             label={label}
