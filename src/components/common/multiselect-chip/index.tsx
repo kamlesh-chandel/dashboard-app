@@ -9,7 +9,7 @@ import Select from '@mui/material/Select';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import type { MultipleSelectChipProps } from '@/types/ui.types';
-
+import CancelIcon from '@mui/icons-material/Cancel';
 const MenuProps = {
   PaperProps: {
     style: {
@@ -44,7 +44,10 @@ const MultipleSelectChip: React.FC<MultipleSelectChipProps> = ({
 
     onChange(finalValue);
   };
-
+  const handleDelete = (chipToDelete: string) => {
+    const updated = value.filter((item) => item !== chipToDelete);
+    onChange(updated);
+  };
   return (
     <FormControl fullWidth>
       <Select
@@ -62,7 +65,22 @@ const MultipleSelectChip: React.FC<MultipleSelectChipProps> = ({
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {selected.map((val) => {
                 const item = options.find((o) => o.value === val);
-                return <Chip key={val} label={item?.label || val} />;
+                return (
+                  <Chip
+                    key={val}
+                    label={item?.label || val}
+                    onDelete={() => handleDelete(val)}
+                    deleteIcon={
+                      <CancelIcon
+                        onMouseDown={(e) => e.stopPropagation()}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(val);
+                        }}
+                      />
+                    }
+                  />
+                );
               })}
             </Box>
           );

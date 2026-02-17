@@ -60,8 +60,8 @@ const UsersTable: React.FC = () => {
             }
 
             if (column.id === 'assignedGames') {
-              value = row.assignedGames.map((game) => (
-                <div>{game.gameName},</div>
+              value = row.assignedGames.map((game, index) => (
+                <div key={index}>{game.gameName},</div>
               ));
             }
 
