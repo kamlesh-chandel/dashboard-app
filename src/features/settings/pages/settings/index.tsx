@@ -6,7 +6,7 @@ import type { ColorModeContextType } from '@/types/theme.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const Settings: React.FC = () => {
+const Settings = () => {
   const context = useContext(ColorModeContext) as ColorModeContextType;
   const { toggleTheme, mode } = context;
 

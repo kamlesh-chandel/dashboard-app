@@ -9,10 +9,11 @@ import { ROUTES } from '@/utils/routes';
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 const Settings = lazy(() => import('../features/settings/pages/settings'));
 
-export const AppRoutes: React.FC = () => {
+export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route element={<PublicRoute />}>
           <Route path={ROUTES.LOGIN} element={<Login />} />
         </Route>

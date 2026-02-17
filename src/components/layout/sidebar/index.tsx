@@ -20,7 +20,7 @@ import { ROUTES, NAV_ITEMS } from '@/utils/routes';
 import './index.css';
 import '@/styles/theme.css';
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
