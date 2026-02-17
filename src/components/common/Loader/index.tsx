@@ -1,6 +1,6 @@
 import './index.css';
 
-const Loader: React.FC = () => {
+const Loader = () => {
   return (
     <div className="loader-wrapper">
       <div className="spinner"></div>
