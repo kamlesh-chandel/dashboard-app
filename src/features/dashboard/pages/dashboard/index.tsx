@@ -9,7 +9,7 @@ import PageHeader from '@/components/layout/page-header';
 import './index.css';
 import '@/styles/theme.css';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const { data, isLoading } = useDashboardData();
   const navigate = useNavigate();
 
