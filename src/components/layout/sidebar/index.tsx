@@ -48,7 +48,6 @@ const Sidebar = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-
       }}
     >
       <div>
@@ -107,13 +106,7 @@ const Sidebar = () => {
     );
   }
 
-  return (
-    <Box
-      className="sidebar"
-    >
-      {sidebarContent}
-    </Box>
-  );
+  return <Box className="sidebar">{sidebarContent}</Box>;
 };
 
 export default Sidebar;

@@ -13,5 +13,4 @@ export interface DummyUser {
   password: string;
 }
 
-
 export type authCheck = () => boolean;
