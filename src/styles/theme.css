@@ -19,7 +19,7 @@ body[data-theme='dark'] {
   --color-surface-2: #1f2430;
   --color-text: #e6edf3;
   --color-border: #2a3142;
-  --color-heading: #00e0ff;
+  --color-cyan: #00e0ff;
 }
 
 body[data-theme='light'] {
@@ -28,7 +28,7 @@ body[data-theme='light'] {
   --color-surface-2: #f1f5f9;
   --color-text: #0b1220;
   --color-border: #e5e7eb;
-  --color-heading: rgb(23, 126, 149);
+  --color-cyan: rgb(23, 126, 149);
 }
 
 * {

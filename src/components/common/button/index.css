@@ -13,7 +13,7 @@
 }
 
 .app-btn-primary {
-  background: var(--color-primary);
+  background: var(--color-cyan);
   color: var(--color-black);
   border: none;
 }
