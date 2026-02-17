@@ -5,39 +5,34 @@
   gap: 18px;
 }
 
-/* each field block */
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
+.input-wrapper{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  width:100%;
 }
 
-/* label */
-.input-wrapper label {
-  font-size: 13px;
-  font-weight: 600;
+.input-wrapper label{
+  font-size:13px;
+  font-weight:600;
   color: var(--color-text-muted);
   letter-spacing: 0.3px;
 }
 
-/* error spacing */
-.input-wrapper p {
-  font-size: 12px;
-  margin-top: 2px;
+.input-wrapper p{
+  font-size:12px;
+  margin-top:2px;
 }
 
-/* button area */
-.app-form button {
-  margin-top: 10px;
-  height: 46px;
-  font-size: 15px;
+.app-form button{
+  margin-top:10px;
+  height:46px;
+  font-size:15px;
 }
 
-/* optional actions */
-.form-actions {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
+.form-actions{
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+  margin-top:6px;
 }

@@ -10,5 +10,6 @@
 }
 
 .app-card:hover {
+  border: 1px solid var(--color-heading);
   transform: translateY(-3px);
 }

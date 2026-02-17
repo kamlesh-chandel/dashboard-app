@@ -7,7 +7,7 @@ import Loader from '@/components/common/Loader';
 import './index.css';
 import '@/styles/theme.css';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const { data, isLoading } = useDashboardData();
 
   const storedUser = localStorage.getItem('user');
