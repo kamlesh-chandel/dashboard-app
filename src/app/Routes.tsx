@@ -13,7 +13,6 @@ export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route element={<PublicRoute />}>
           <Route path={ROUTES.LOGIN} element={<Login />} />
         </Route>

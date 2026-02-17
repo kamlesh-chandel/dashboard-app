@@ -12,6 +12,6 @@
   transition: all 0.18s ease;
 }
 
-.app-input:focus{
+.app-input:focus {
   border-color: var(--color-primary);
 }
