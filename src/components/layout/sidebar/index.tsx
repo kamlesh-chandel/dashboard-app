@@ -15,7 +15,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Button } from '@/components/common/button';
-import { ROUTES, NAV_ITEMS } from '@/utils/routes';
+import { ROUTES, NAV_ITEMS } from '@/constants/routes';
 
 import './index.css';
 import '@/styles/theme.css';

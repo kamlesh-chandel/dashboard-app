@@ -54,7 +54,7 @@ export interface BarChartProps {
   data: BarChartItem[];
 }
 
-export interface PageHeaderProps {
+export interface NavbarProps {
   title?: string;
 }
 
