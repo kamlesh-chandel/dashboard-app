@@ -1,7 +1,7 @@
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import type { ReactNode } from 'react';
-import "./index.css";
-import "@/styles/theme.css";
+import './index.css';
+import '@/styles/theme.css';
 
 interface CommonDialogProps {
   open: boolean;
