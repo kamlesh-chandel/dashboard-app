@@ -3,20 +3,20 @@ import { Input } from '../input';
 import { Button } from '../button';
 import { Error } from '../error';
 import { EMAIL_REGEX } from '@/utils/regex';
-import type { FormProps, FormDataType, FormErrorsType } from '@/types/ui.types';
+import type { FormProps, FormErrorsType } from '@/types/ui.types';
 
 import './index.css';
 import '@/styles/theme.css';
 import MultipleSelectChip from '../multiselect-chip';
 
-export const Form: React.FC<FormProps> = ({
+export const Form = <T extends Record<string, unknown>>({
   fields = [],
   onSubmit,
   buttonText = 'Submit',
   actions,
-}) => {
-  const [formData, setFormData] = useState<FormDataType>({});
-  const [errors, setErrors] = useState<FormErrorsType>({});
+}: FormProps<T>) => {
+  const [formData, setFormData] = useState<T>({} as T);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (name: string, value: string | string[]) => {
     setFormData((prev) => ({
@@ -24,10 +24,10 @@ export const Form: React.FC<FormProps> = ({
       [name]: value,
     }));
 
-    if (typeof value === 'string') validateField(name, value);
+    validateField(name, value);
   };
 
-  const validateField = (name: string, value: string) => {
+  const validateField = (name: string, value: string | string[]) => {
     const field = fields.find((field) => field.name === name);
     let error = '';
 
@@ -38,12 +38,12 @@ export const Form: React.FC<FormProps> = ({
     }
 
     if (!error && field.type === 'email') {
-      if (value && !EMAIL_REGEX.test(value)) {
+      if (typeof value === 'string' && !EMAIL_REGEX.test(value)) {
         error = 'Invalid email format';
       }
     }
 
-    if (!error && field.minLength) {
+    if (!error && field.minLength && typeof value === 'string') {
       if (value.length < field.minLength) {
         error = `${field.label} must be at least ${field.minLength} characters`;
       }
@@ -61,13 +61,13 @@ export const Form: React.FC<FormProps> = ({
     const newErrors: FormErrorsType = {};
     let hasError = false;
 
-    fields.forEach(({ name }) => {
+    fields.forEach(({ label, name }) => {
       const value = formData[name];
 
       if (Array.isArray(value)) {
         if (!value.length) {
           hasError = true;
-          newErrors[name] = 'Required';
+          newErrors[name] = `${label} is required`;
         }
         return;
       }
@@ -88,7 +88,7 @@ export const Form: React.FC<FormProps> = ({
     if (!validateAll()) return;
 
     onSubmit(formData);
-    setFormData({});
+    setFormData({} as T);
     setErrors({});
   };
 

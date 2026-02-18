@@ -27,6 +27,15 @@
   height: 50px;
 }
 
+.no-users-wrapper {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0.7;
+}
+
 @media (max-width: 768px) {
   .table-button-wrapper {
     margin-top: 20px;
