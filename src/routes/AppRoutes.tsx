@@ -7,7 +7,6 @@ import ProtectedRoute from './ProtectedRoute';
 import { ROUTES } from '@/constants/routes';
 import AppLayout from '@/components/layout/app-layout';
 
-
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 const Settings = lazy(() => import('../features/settings/pages/settings'));
 const Users = lazy(() => import('../features/dashboard/pages/users'));

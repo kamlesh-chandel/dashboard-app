@@ -29,7 +29,6 @@ export interface CardProps {
   onClick?: () => void;
 }
 
-
 export interface FormErrorsType {
   [key: string]: string;
 }
