@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import { tableColumns } from '@/features/dashboard/constants/users';
 import Loader from '@/components/common/loader';
 import UserDialog from '../user-dialog';
-import CommonTable from '@/components/common/table';
+import Table from '@/components/common/table';
 
 import type { CreateUserFormData, UsersTableProps } from '@/types/ui.types';
 import type { AssignedGame, usersProps } from '@/types/user.types';
@@ -13,7 +13,7 @@ import type { AssignedGame, usersProps } from '@/types/user.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const UsersTable: React.FC<UsersTableProps> = ({ users, isLoading }) => {
+const UsersTable = ({ users, isLoading }: UsersTableProps) => {
   const [open, setOpen] = React.useState(false);
 
   const handleSubmit = (data: CreateUserFormData) => {
@@ -21,32 +21,34 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, isLoading }) => {
     console.log(data);
   };
 
-  const renderRow = (row: usersProps, index: number) => (
-    <TableRow hover tabIndex={-1} key={index}>
+  const renderRowInBody = (row: usersProps, rowIndex: number) => (
+    <TableRow hover tabIndex={-1} key={rowIndex}>
       {tableColumns.map((column) => {
         let value: React.ReactNode;
 
-        if (
-          column.id === 'name' ||
-          column.id === 'email' ||
-          column.id === 'phone'
-        ) {
-          value = <div>{row[column.id]}</div>;
-        }
+        switch (column.id) {
+          case 'name':
+          case 'email':
+          case 'phone':
+            value = <div>{row[column.id]}</div>;
+            break;
 
-        if (column.id === 'assignedGames') {
-          value = row.assignedGames.map((game: AssignedGame, i: number) => (
-            <div key={i}>{game.gameName},</div>
-          ));
-        }
+          case 'assignedGames':
+            value = row.assignedGames.map(({gameName}: AssignedGame) => (
+              <div key={gameName}>{gameName},</div>
+            ));
+            break;
 
-        if (column.id === 'actions') {
-          value = (
-            <div className="table-actions">
-              <span onClick={() => setOpen(true)}>Edit</span> {' | '}
-              Delete
-            </div>
-          );
+          case 'actions':
+            value = (
+              <div className="table-actions">
+                <span onClick={() => setOpen(true)}>Edit</span> {' | '} Delete
+              </div>
+            );
+            break;
+
+          default:
+            value = null;
         }
 
         return (
@@ -62,7 +64,11 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, isLoading }) => {
 
   return (
     <>
-      <CommonTable columns={tableColumns} data={users} renderRow={renderRow} />
+      <Table
+        columns={tableColumns}
+        data={users}
+        renderRowInBody={renderRowInBody}
+      />
 
       <UserDialog
         open={open}

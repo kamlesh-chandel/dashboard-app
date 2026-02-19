@@ -5,10 +5,10 @@ import { lazy, Suspense } from 'react';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import { ROUTES } from '@/constants/routes';
-import AppLayout from '@/components/layout/app-layout';
+import Layout from '@/components/layout';
+import Settings from '../features/settings/pages/settings';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
-const Settings = lazy(() => import('../features/settings/pages/settings'));
 const Users = lazy(() => import('../features/dashboard/pages/users'));
 
 export const AppRoutes = () => {
@@ -20,7 +20,7 @@ export const AppRoutes = () => {
         </Route>
 
         <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout />}>
+          <Route element={<Layout />}>
             <Route
               path={ROUTES.DASHBOARD}
               element={
@@ -29,14 +29,7 @@ export const AppRoutes = () => {
                 </Suspense>
               }
             />
-            <Route
-              path={ROUTES.SETTINGS}
-              element={
-                <Suspense fallback={<Loader />}>
-                  <Settings />
-                </Suspense>
-              }
-            />
+            <Route path={ROUTES.SETTINGS} element={<Settings />} />
             <Route
               path={ROUTES.USERS}
               element={

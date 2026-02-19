@@ -66,7 +66,7 @@ const Sidebar = () => {
           {NAV_ITEMS.map((item) => (
             <Button
               key={item.path}
-              variant={location.pathname === item.path ? 'primary' : 'gray'}
+              variant={location.pathname === item.path ? 'primary' : 'secondary'}
               onClick={() => handleNavigate(item.path)}
             >
               {item.icon}
@@ -76,7 +76,7 @@ const Sidebar = () => {
         </Stack>
       </div>
 
-      <Button variant="outline-danger" onClick={handleLogout}>
+      <Button variant="error" onClick={handleLogout}>
         <LogoutIcon />
         Logout
       </Button>

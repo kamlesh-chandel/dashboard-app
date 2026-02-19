@@ -1,31 +1,31 @@
-import CommonDialog from '@/components/common/dialog';
+import Dialog from '@/components/common/dialog';
 import { Form } from '@/components/common/form';
 import { USER_FIELDS } from '@/features/dashboard/constants/users';
 
 import type { UserDialogProps } from '@/types/ui.types';
 
-const UserDialog: React.FC<UserDialogProps> = ({
+const UserDialog = ({
   open,
   onClose,
   onSubmit,
   mode = 'add',
-}) => {
+}: UserDialogProps) => {
+  const isEditMode = mode === 'edit';
   return (
-    <CommonDialog
+    <Dialog
       open={open}
       onClose={onClose}
-      title={mode === 'edit' ? 'Edit User' : 'Add New User'}
+      title={isEditMode ? 'Edit User' : 'Add New User'}
       maxWidth="xs"
       fullWidth
+      maxHeight={{ xs: 580, md: 1000 }}
     >
-      <div>
         <Form
           fields={USER_FIELDS}
           onSubmit={onSubmit}
-          buttonText={mode === 'edit' ? 'Update User' : 'Add User'}
+          buttonText={isEditMode ? 'Update User' : 'Add User'}
         />
-      </div>
-    </CommonDialog>
+    </Dialog>
   );
 };
 

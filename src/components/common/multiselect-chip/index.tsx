@@ -27,12 +27,12 @@ function getStyles(name: string, selected: string[], theme: Theme) {
   };
 }
 
-const MultipleSelectChip: React.FC<MultipleSelectChipProps> = ({
+const MultipleSelectChip = ({
   label,
   value = [],
   options = [],
   onChange,
-}) => {
+}: MultipleSelectChipProps) => {
   const theme = useTheme();
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {

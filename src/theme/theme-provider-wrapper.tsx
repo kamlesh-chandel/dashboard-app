@@ -6,11 +6,11 @@ import { ColorModeContext } from '@/context/color-mode-context';
 
 const STORED_THEME = 'theme';
 
-interface Props {
+interface ThemeProviderWrapperProps {
   children: React.ReactNode;
 }
 
-const ThemeProviderWrapper: React.FC<Props> = ({ children }) => {
+const ThemeProviderWrapper = ({ children }: ThemeProviderWrapperProps) => {
   const storedTheme =
     (localStorage.getItem(STORED_THEME) as ThemeMode) || 'light';
   const [mode, setMode] = useState<ThemeMode>(storedTheme);

@@ -12,15 +12,15 @@ const Settings = () => {
     toggleTheme(storedTheme === 'light' ? 'dark' : 'light');
   };
 
+  const isDarkmode = mode === 'dark';
+
   return (
-    <>
       <Stack direction="row" alignItems="center" spacing={1}>
         <Typography variant="body2">
-          {mode === 'dark' ? 'Toggle to Light' : 'Toggle to Dark'}
+          {isDarkmode ? 'Toggle to Light' : 'Toggle to Dark'}
         </Typography>
-        <Switch checked={mode === 'dark'} onChange={handleToggleTheme} />
+        <Switch checked={isDarkmode} onChange={handleToggleTheme} />
       </Stack>
-    </>
   );
 };
 

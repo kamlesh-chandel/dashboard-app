@@ -10,7 +10,7 @@ import { createUser } from '@/services/user.service';
 import { useUsers } from '@/hooks/useUsers';
 import { toast } from 'react-toastify';
 
-const Users: React.FC = () => {
+const Users = () => {
   const [open, setOpen] = useState(false);
   const { users, isLoading, refetch } = useUsers();
 

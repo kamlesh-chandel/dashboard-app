@@ -13,7 +13,7 @@ import '@/styles/theme.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const BarChart: React.FC<BarChartProps> = ({ data }) => {
+const BarChart = ({ data }: BarChartProps) => {
   const chartData = {
     labels: data.map((item) => item.label),
     datasets: [

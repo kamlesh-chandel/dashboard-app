@@ -1,39 +1,38 @@
-import { Dialog, DialogTitle, DialogContent } from '@mui/material';
+import { Dialog as MuiDialog, DialogTitle, DialogContent } from '@mui/material';
 import type { ReactNode } from 'react';
 import './index.css';
 import '@/styles/theme.css';
 
-interface CommonDialogProps {
+interface DialogProps {
   open: boolean;
   onClose: () => void;
   title?: string;
   children: ReactNode;
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fullWidth?: boolean;
+  maxHeight?: number | string | object;
 }
 
-const CommonDialog: React.FC<CommonDialogProps> = ({
+const Dialog = ({
   open,
   onClose,
   title,
   children,
   maxWidth = 'xs',
   fullWidth = true,
-}) => {
+  maxHeight,
+}: DialogProps) => {
   return (
-    <Dialog
+    <MuiDialog
       open={open}
       onClose={onClose}
       maxWidth={maxWidth}
       fullWidth={fullWidth}
       sx={{
-        maxHeight: {
-          xs: 580,
-          md: 1000,
-        },
+        ...(maxHeight && { maxHeight }),
       }}
     >
-      <div className="app-dialog">
+      <div className="dialog-container">
         {title && <DialogTitle>{title}</DialogTitle>}
 
         <DialogContent
@@ -47,8 +46,8 @@ const CommonDialog: React.FC<CommonDialogProps> = ({
           {children}
         </DialogContent>
       </div>
-    </Dialog>
+    </MuiDialog>
   );
 };
 
-export default CommonDialog;
+export default Dialog;

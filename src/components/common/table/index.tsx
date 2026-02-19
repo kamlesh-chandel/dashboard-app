@@ -1,38 +1,43 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import {
+  Paper,
+  Table as MuiTable,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from '@mui/material';
 
-export interface Column {
+interface Column {
   id: string;
   label: string;
   align?: 'left' | 'right' | 'center';
 }
 
-interface CommonTableProps<T> {
+interface TableProps<T> {
   columns: readonly Column[];
   data: readonly T[];
-  renderRow: (row: T, index: number) => React.ReactNode;
+  renderRowInBody: (row: T, index: number) => React.ReactNode;
   rowsPerPageOptions?: number[];
   defaultRowsPerPage?: number;
 }
 
-const CommonTable = <T,>({
+const Table = <T,>({
   columns,
   data,
-  renderRow,
+  renderRowInBody,
   rowsPerPageOptions = [10, 25, 100],
   defaultRowsPerPage = 10,
-}: CommonTableProps<T>) => {
+}: TableProps<T>) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(defaultRowsPerPage);
 
-  const handleChangePage = (_: unknown, newPage: number) => {
+  const handleChangePage = (
+    _event: React.MouseEvent<HTMLButtonElement> | null, //_event parameter is mandatory here but never used. _ as a prefix is used to remove ts warning
+    newPage: number
+  ) => {
     setPage(newPage);
   };
 
@@ -58,7 +63,7 @@ const CommonTable = <T,>({
           },
         }}
       >
-        <Table stickyHeader>
+        <MuiTable stickyHeader>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -70,9 +75,9 @@ const CommonTable = <T,>({
           </TableHead>
 
           <TableBody>
-            {paginatedData.map((row, index) => renderRow(row, index))}
+            {paginatedData.map((row, index) => renderRowInBody(row, index))}
           </TableBody>
-        </Table>
+        </MuiTable>
       </TableContainer>
 
       <TablePagination
@@ -88,4 +93,4 @@ const CommonTable = <T,>({
   );
 };
 
-export default CommonTable;
+export default Table;
