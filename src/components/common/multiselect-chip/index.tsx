@@ -1,6 +1,13 @@
 import { useTheme } from '@mui/material/styles';
-import { Box, OutlinedInput, MenuItem, FormControl, Select, Chip } from '@mui/material';
-import type { Theme, SelectChangeEvent , } from '@mui/material';
+import {
+  Box,
+  OutlinedInput,
+  MenuItem,
+  FormControl,
+  Select,
+  Chip,
+} from '@mui/material';
+import type { Theme, SelectChangeEvent } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import type { MultipleSelectChipProps } from '@/types/ui.types';
 
