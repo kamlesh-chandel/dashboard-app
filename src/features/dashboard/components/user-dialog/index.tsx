@@ -20,11 +20,11 @@ const UserDialog = ({
       fullWidth
       maxHeight={{ xs: 580, md: 1000 }}
     >
-        <Form
-          fields={USER_FIELDS}
-          onSubmit={onSubmit}
-          buttonText={isEditMode ? 'Update User' : 'Add User'}
-        />
+      <Form
+        fields={USER_FIELDS}
+        onSubmit={onSubmit}
+        buttonText={isEditMode ? 'Update User' : 'Add User'}
+      />
     </Dialog>
   );
 };

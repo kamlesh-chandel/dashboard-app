@@ -1,15 +1,9 @@
-import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import type { Theme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import type { SelectChangeEvent } from '@mui/material/Select';
-import Chip from '@mui/material/Chip';
-import type { MultipleSelectChipProps } from '@/types/ui.types';
+import { Box, OutlinedInput, MenuItem, FormControl, Select, Chip } from '@mui/material';
+import type { Theme, SelectChangeEvent , } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
+import type { MultipleSelectChipProps } from '@/types/ui.types';
+
 const MenuProps = {
   PaperProps: {
     style: {

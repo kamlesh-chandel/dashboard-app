@@ -66,7 +66,9 @@ const Sidebar = () => {
           {NAV_ITEMS.map((item) => (
             <Button
               key={item.path}
-              variant={location.pathname === item.path ? 'primary' : 'secondary'}
+              variant={
+                location.pathname === item.path ? 'primary' : 'secondary'
+              }
               onClick={() => handleNavigate(item.path)}
             >
               {item.icon}

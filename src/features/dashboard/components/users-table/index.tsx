@@ -34,7 +34,7 @@ const UsersTable = ({ users, isLoading }: UsersTableProps) => {
             break;
 
           case 'assignedGames':
-            value = row.assignedGames.map(({gameName}: AssignedGame) => (
+            value = row.assignedGames.map(({ gameName }: AssignedGame) => (
               <div key={gameName}>{gameName},</div>
             ));
             break;

@@ -15,12 +15,12 @@ const Settings = () => {
   const isDarkmode = mode === 'dark';
 
   return (
-      <Stack direction="row" alignItems="center" spacing={1}>
-        <Typography variant="body2">
-          {isDarkmode ? 'Toggle to Light' : 'Toggle to Dark'}
-        </Typography>
-        <Switch checked={isDarkmode} onChange={handleToggleTheme} />
-      </Stack>
+    <Stack direction="row" alignItems="center" spacing={1}>
+      <Typography variant="body2">
+        {isDarkmode ? 'Toggle to Light' : 'Toggle to Dark'}
+      </Typography>
+      <Switch checked={isDarkmode} onChange={handleToggleTheme} />
+    </Stack>
   );
 };
 
