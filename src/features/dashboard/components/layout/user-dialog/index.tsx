@@ -1,11 +1,11 @@
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
-import type { UserDialogProps } from '@/types/ui.types';
+
+import type { UserDialogProps } from '@/types/user-dialog.types';
+import { USER_FIELDS } from '@/features/dashboard/constants/users';
+import { Form } from '@/components/common/form';
 
 import './index.css';
 import '@/styles/theme.css';
-
-import { USER_FIELDS } from '@/features/dashboard/constants/users';
-import { Form } from '@/components/common/form';
 
 const UserDialog: React.FC<UserDialogProps> = ({
   open,
