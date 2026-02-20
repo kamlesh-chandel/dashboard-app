@@ -14,7 +14,7 @@ export const getTheme = (mode: ThemeMode): Theme => {
       },
 
       background: {
-        default: colors.background,
+        default: colors.bg,
         paper: colors.surface,
       },
 
@@ -24,6 +24,9 @@ export const getTheme = (mode: ThemeMode): Theme => {
       },
 
       divider: colors.border,
+      error: {
+        main: colors.error,
+      },
     },
 
     typography: {
