@@ -21,39 +21,38 @@ const UsersTable = ({ users, isLoading }: UsersTableProps) => {
     console.log(data);
   };
 
+  const getCellValue = (columnId: string, row: usersProps) => {
+    switch (columnId) {
+      case 'name':
+      case 'email':
+      case 'phone':
+        return <div>{row[columnId]}</div>;
+
+      case 'assignedGames':
+        return row.assignedGames.map(({ gameName }: AssignedGame) => (
+          <div key={gameName}>{gameName},</div>
+        ));
+
+      case 'actions':
+        return (
+          <div className="table-actions">
+            <span onClick={() => setOpen(true)}>Edit</span> {' | '} Delete
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+
   const renderRowInBody = (row: usersProps, rowIndex: number) => (
     <TableRow hover tabIndex={-1} key={rowIndex}>
       {tableColumns.map((column) => {
-        let value: React.ReactNode;
-
-        switch (column.id) {
-          case 'name':
-          case 'email':
-          case 'phone':
-            value = <div>{row[column.id]}</div>;
-            break;
-
-          case 'assignedGames':
-            value = row.assignedGames.map(({ gameName }: AssignedGame) => (
-              <div key={gameName}>{gameName},</div>
-            ));
-            break;
-
-          case 'actions':
-            value = (
-              <div className="table-actions">
-                <span onClick={() => setOpen(true)}>Edit</span> {' | '} Delete
-              </div>
-            );
-            break;
-
-          default:
-            value = null;
-        }
 
         return (
           <TableCell key={column.id} align={column.align || 'left'}>
-            {value}
+            {getCellValue(column.id, row)}
           </TableCell>
         );
       })}
