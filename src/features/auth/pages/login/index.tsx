@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from '@/components/common/form';
 import { LOGIN_FIELDS, DUMMY_USER } from '@/features/auth/constants/login';
 import type { FormDataType } from '@/types/ui.types';
+import { ROUTES } from '@/utils/routes';
 import './index.css';
 
 export const Login = () => {
@@ -17,7 +18,7 @@ export const Login = () => {
       localStorage.setItem('user', JSON.stringify({ email }));
 
       toast.success('Login Successfully');
-      navigate('/dashboard');
+      navigate(ROUTES.DASHBOARD);
     } else {
       toast.error('Invalid email or password');
     }

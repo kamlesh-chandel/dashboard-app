@@ -5,6 +5,7 @@ import BarChart from '@/components/common/bar-chart';
 import { useDashboardData } from '@/hooks/useDashboardData';
 import Loader from '@/components/common/Loader';
 import PageHeader from '@/components/layout/page-header';
+import { ROUTES } from '@/utils/routes';
 
 import './index.css';
 import '@/styles/theme.css';
@@ -16,7 +17,7 @@ const Dashboard = () => {
   if (isLoading) return <Loader />;
 
   const handleUsersClick = () => {
-    navigate('/dashboard/users');
+    navigate(ROUTES.USERS);
   };
 
   const getCards = () => {
