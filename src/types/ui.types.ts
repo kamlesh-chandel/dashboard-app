@@ -64,13 +64,6 @@ export interface tableColumnProps {
   align?: 'center';
 }
 
-export interface UserDialogProps {
-  open: boolean;
-  onClose: () => void;
-  onSubmit: (data: CreateUserFormData) => void;
-  mode?: 'add' | 'edit';
-}
-
 export interface FieldOption {
   label: string;
   value: string;
