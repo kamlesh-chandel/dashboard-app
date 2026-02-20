@@ -1,28 +1,29 @@
 import { createTheme, type Theme } from '@mui/material/styles';
 import type { ThemeMode } from '@/types/theme.types';
+import { lightColors, darkColors } from './colors';
 
 export const getTheme = (mode: ThemeMode): Theme => {
-  const isDark = mode === 'dark';
+  const colors = mode === 'dark' ? darkColors : lightColors;
 
   return createTheme({
     palette: {
       mode,
 
       primary: {
-        main: '#00e0ff',
+        main: colors.primary,
       },
 
       background: {
-        default: isDark ? '#0f1117' : '#f4f6fb',
-        paper: isDark ? '#181c24' : '#ffffff',
+        default: colors.background,
+        paper: colors.surface,
       },
 
       text: {
-        primary: isDark ? '#e6edf3' : '#0b1220',
-        secondary: isDark ? '#9aa4b2' : '#4b5563',
+        primary: colors.textPrimary,
+        secondary: colors.textSecondary,
       },
 
-      divider: isDark ? '#2a3142' : '#e5e7eb',
+      divider: colors.border,
     },
 
     typography: {
@@ -37,8 +38,8 @@ export const getTheme = (mode: ThemeMode): Theme => {
       MuiCard: {
         styleOverrides: {
           root: {
-            background: isDark ? '#181c24' : '#ffffff',
-            border: `1px solid ${isDark ? '#2a3142' : '#e5e7eb'}`,
+            background: colors.surface,
+            border: `1px solid ${colors.border}`,
             boxShadow: 'none',
           },
         },
@@ -47,8 +48,8 @@ export const getTheme = (mode: ThemeMode): Theme => {
       MuiAppBar: {
         styleOverrides: {
           root: {
-            background: isDark ? '#181c24' : '#ffffff',
-            borderBottom: `1px solid ${isDark ? '#2a3142' : '#e5e7eb'}`,
+            background: colors.surface,
+            borderBottom: `1px solid ${colors.border}`,
             boxShadow: 'none',
           },
         },
