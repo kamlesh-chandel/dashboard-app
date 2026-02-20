@@ -12,6 +12,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Button } from '@/components/common/button';
 import { ROUTES, NAV_ITEMS } from '@/utils/routes';
@@ -19,7 +20,7 @@ import { ROUTES, NAV_ITEMS } from '@/utils/routes';
 import './index.css';
 import '@/styles/theme.css';
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,7 +29,7 @@ const Sidebar: React.FC = () => {
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleNavigate = (path: string):void => {
+  const handleNavigate = (path: string): void => {
     navigate(path);
     setOpen(false);
   };
@@ -43,15 +44,22 @@ const Sidebar: React.FC = () => {
     <Box
       sx={{
         height: '100%',
-        bgcolor: 'background.paper',
         p: 3,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+
       }}
     >
       <div>
-        <Typography variant="h5" fontWeight={700} mb={3} ml={1}>
+        <Typography
+          variant="h5"
+          fontWeight={800}
+          mt={5}
+          mb={3}
+          ml={3}
+          sx={{ color: 'var(--color-heading)', letterSpacing: 2 }}
+        >
           Admin Panel
         </Typography>
 
@@ -62,6 +70,7 @@ const Sidebar: React.FC = () => {
               variant={location.pathname === item.path ? 'primary' : 'gray'}
               onClick={() => handleNavigate(item.path)}
             >
+              {item.icon}
               {item.label}
             </Button>
           ))}
@@ -69,6 +78,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <Button variant="outline-danger" onClick={handleLogout}>
+        <LogoutIcon />
         Logout
       </Button>
     </Box>
@@ -99,12 +109,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <Box
-      sx={{
-        width: 260,
-        height: '100vh',
-        borderRight: '1px solid',
-        borderColor: 'divider',
-      }}
+      className="sidebar"
     >
       {sidebarContent}
     </Box>

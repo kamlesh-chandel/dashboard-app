@@ -1,12 +1,9 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { useMemo, useState, createContext } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { getTheme } from '@/theme/theme';
 import type { ThemeMode } from '@/types/theme.types';
-import type { ColorModeContextType } from '@/types/theme.types';
-
-export const ColorModeContext = createContext<ColorModeContextType | undefined>(
-  undefined
-);
+import { ColorModeContext } from '@/context/ColorModeContext';
+import { lightColors, darkColors } from '@/theme/colors';
 
 const STORED_THEME = 'theme';
 
@@ -17,6 +14,7 @@ interface Props {
 const ThemeProviderWrapper: React.FC<Props> = ({ children }) => {
   const storedTheme =
     (localStorage.getItem(STORED_THEME) as ThemeMode) || 'light';
+
   const [mode, setMode] = useState<ThemeMode>(storedTheme);
 
   const toggleTheme = (theme: ThemeMode): void => {
@@ -25,6 +23,24 @@ const ThemeProviderWrapper: React.FC<Props> = ({ children }) => {
   };
 
   const theme = useMemo(() => getTheme(mode), [mode]);
+
+  useEffect(() => {
+    const colors = mode === 'dark' ? darkColors : lightColors;
+    const root = document.documentElement;
+
+    root.style.setProperty('--color-primary', colors.primary);
+    root.style.setProperty('--color-primary-hover', colors.primaryHover);
+    root.style.setProperty('--color-bg', colors.bg);
+    root.style.setProperty('--color-surface', colors.surface);
+    root.style.setProperty('--color-surface-2', colors.surface2);
+    root.style.setProperty('--color-text', colors.textPrimary);
+    root.style.setProperty('--color-border', colors.border);
+    root.style.setProperty('--color-heading', colors.heading);
+    root.style.setProperty('--color-error', colors.error);
+    root.style.setProperty('--color-btn', colors.button);
+
+    document.body.setAttribute('data-theme', mode);
+  }, [mode]);
 
   return (
     <ColorModeContext.Provider value={{ mode, toggleTheme }}>

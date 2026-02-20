@@ -4,7 +4,7 @@ import type {
   CSSProperties,
   ReactNode,
 } from 'react';
-import type { LoginField } from '@/types/authForm.types';
+import type { LoginField } from '@/types/auth.types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -16,13 +16,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export interface InputProps {
   id?: string;
   type?: string;
+  name?: string;
   placeholder?: string;
   value?: string | number;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface CardProps {
-  title?: string;
+  title: string;
   value?: number | string;
   subtitle?: string;
 }

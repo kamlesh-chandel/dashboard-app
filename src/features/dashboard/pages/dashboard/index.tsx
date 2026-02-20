@@ -7,31 +7,48 @@ import Loader from '@/components/common/Loader';
 import './index.css';
 import '@/styles/theme.css';
 
-const Dashboard: React.FC = () => {
-  const {data, isLoading} = useDashboardData();
+const Dashboard = () => {
+  const { data, isLoading } = useDashboardData();
 
-  if(isLoading) return <Loader />;
+  const storedUser = localStorage.getItem('user');
+
+  const userEmail = storedUser
+    ? JSON.parse(storedUser)?.email || 'User'
+    : 'User';
+
+  if (isLoading) return <Loader />;
 
   const getCards = () => {
-    return data?.map((data) => (
-      <Card title={data.label} value={data.value} subtitle={data.subtitle} />
+    return data?.map(({ label, value, subtitle }) => (
+      <Card title={label ?? ''} value={value} subtitle={subtitle} />
     ));
   };
+
+  const chartData =
+    data
+      ?.filter((item) => item.label && item.value !== undefined)
+      .map((item) => ({
+        label: item.label as string,
+        value: Number(item.value),
+      })) ?? [];
 
   return (
     <div className="dashboard-layout">
       <Sidebar />
 
       <main className="dashboard-content">
-        <div className="content-header">
+        <div className="dashboard-heading-wrapper">
           <h1>Dashboard</h1>
+          <div>
+            Welcome, <span className="user-email">{userEmail}</span>
+          </div>
         </div>
         <div className="content-body">
           <div className="cards-wrapper">{getCards()}</div>
           <div className="chart-container">
             <h3>Analytics Overview</h3>
             <div className="chart-wrapper">
-              <BarChart data={data} />
+              <BarChart data={chartData} />
             </div>
           </div>
         </div>

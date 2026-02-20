@@ -2,14 +2,11 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 import { Form } from '@/components/common/form';
-import {
-  LOGIN_FIELDS,
-  DUMMY_USER,
-} from '@/features/auth/constants/login';
+import { LOGIN_FIELDS, DUMMY_USER } from '@/features/auth/constants/login';
 import type { FormDataType } from '@/types/ui.types';
 import './index.css';
 
-export const Login: React.FC = () => {
+export const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = (data: FormDataType) => {

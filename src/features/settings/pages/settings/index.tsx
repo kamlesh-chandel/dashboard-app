@@ -1,15 +1,20 @@
 import Sidebar from '@/components/layout/sidebar';
 import { Typography, Stack, Switch } from '@mui/material';
 import { useContext } from 'react';
-import { ColorModeContext } from '@/theme/ThemeProviderWrapper';
-import type { ColorModeContextType } from '@/types/themeContext.types';
+import { ColorModeContext } from '@/context/ColorModeContext';
+import type { ColorModeContextType } from '@/types/theme.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const Settings: React.FC = () => {
+const Settings = () => {
   const context = useContext(ColorModeContext) as ColorModeContextType;
   const { toggleTheme, mode } = context;
 
+  const storedUser = localStorage.getItem('user');
+
+  const userEmail = storedUser
+    ? JSON.parse(storedUser)?.email || 'User'
+    : 'User';
   const handleToggleTheme = (): void => {
     const storedTheme = localStorage.getItem('theme');
     toggleTheme(storedTheme === 'light' ? 'dark' : 'light');
@@ -19,8 +24,11 @@ const Settings: React.FC = () => {
       <Sidebar />
 
       <main className="dashboard-content">
-        <div className="content-header">
+        <div className="dashboard-heading-wrapper">
           <h1>Settings</h1>
+          <div>
+            Welcome, <span className="user-email">{userEmail}</span>
+          </div>
         </div>
         <div className="content-body">
           <Stack direction="row" alignItems="center" spacing={1}>
