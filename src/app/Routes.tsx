@@ -8,6 +8,7 @@ import { ROUTES } from '@/utils/routes';
 
 const Dashboard = lazy(() => import('../features/dashboard/pages/dashboard'));
 const Settings = lazy(() => import('../features/settings/pages/settings'));
+const Users = lazy(() => import('../features/dashboard/pages/users'));
 
 export const AppRoutes = () => {
   return (
@@ -31,6 +32,14 @@ export const AppRoutes = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <Settings />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.USERS}
+            element={
+              <Suspense fallback={<Loader />}>
+                <Users />
               </Suspense>
             }
           />
