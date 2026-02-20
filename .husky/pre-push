@@ -1,5 +1,5 @@
 echo "Checking TypeScript errors..."
-npx tsc --noEmit
+npm run type-check
 
 echo "Building project..."
 npm run build

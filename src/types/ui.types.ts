@@ -4,6 +4,7 @@ import type {
   CSSProperties,
   ReactNode,
 } from 'react';
+import type { usersProps } from './user.types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -28,17 +29,14 @@ export interface CardProps {
   onClick?: () => void;
 }
 
-export interface FormDataType {
-  [key: string]: string | string[];
-}
 
 export interface FormErrorsType {
   [key: string]: string;
 }
 
-export interface FormProps {
+export interface FormProps<T> {
   fields: FormField[];
-  onSubmit: (data: FormDataType) => void;
+  onSubmit: (data: T) => void;
   buttonText?: string;
   actions?: ReactNode;
 }
@@ -108,4 +106,24 @@ export interface MultipleSelectChipProps {
   value: string[];
   options?: MultipleSelectChipOptionProps[];
   onChange: (value: string[]) => void;
+}
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+  [key: string]: unknown;
+}
+
+export interface CreateUserFormData {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  games: string[];
+  [key: string]: unknown;
+}
+
+export interface UsersTableProps {
+  users: usersProps[];
+  isLoading: boolean;
 }

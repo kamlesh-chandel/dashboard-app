@@ -7,19 +7,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { tableColumns, users } from '@/features/dashboard/constants/users';
+
+import { tableColumns } from '@/features/dashboard/constants/users';
+import Loader from '@/components/common/Loader';
 import UserDialog from '../user-dialog';
-import type { FormDataType } from '@/types/ui.types';
+import type { CreateUserFormData, UsersTableProps } from '@/types/ui.types';
 
 import './index.css';
 import '@/styles/theme.css';
 
-const UsersTable: React.FC = () => {
+
+const UsersTable: React.FC<UsersTableProps> = ({ users, isLoading }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [open, setOpen] = React.useState(false);
 
-  const handleSubmit = (data: FormDataType) => {
+  const handleSubmit = (data: CreateUserFormData) => {
     setOpen(false);
     console.log(data); //will integrate api later
   };
@@ -58,7 +61,6 @@ const UsersTable: React.FC = () => {
             ) {
               value = <div>{row[column.id]}</div>;
             }
-
             if (column.id === 'assignedGames') {
               value = row.assignedGames.map((game, index) => (
                 <div key={index}>{game.gameName},</div>
@@ -84,6 +86,7 @@ const UsersTable: React.FC = () => {
       ));
   };
 
+  if (isLoading) return <Loader />;
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer

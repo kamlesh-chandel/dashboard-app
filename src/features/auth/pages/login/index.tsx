@@ -2,24 +2,32 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 import { Form } from '@/components/common/form';
-import { LOGIN_FIELDS, DUMMY_USER } from '@/features/auth/constants/login';
-import type { FormDataType } from '@/types/ui.types';
+import type { LoginFormData } from '@/types/ui.types';
+import { LOGIN_FIELDS } from '@/features/auth/constants/login';
 import './index.css';
+import { loginUser } from '@/services/auth.service';
 
 export const Login = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (data: FormDataType) => {
-    const { email, password } = data;
+  const handleLogin = async (data: LoginFormData) => {
+    try {
+      const { email, password } = data;
 
-    if (email === DUMMY_USER.email && password === DUMMY_USER.password) {
+      const user = await loginUser(email, password);
+
+      if (!user) {
+        toast.error('Invalid email or password');
+        return;
+      }
+
       localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('user', JSON.stringify({ email }));
+      localStorage.setItem('user', JSON.stringify(user));
 
       toast.success('Login Successfully');
       navigate('/dashboard');
-    } else {
-      toast.error('Invalid email or password');
+    } catch {
+      toast.error('Login failed');
     }
   };
 
@@ -27,7 +35,11 @@ export const Login = () => {
     <div className="login-page">
       <div className="login-card">
         <h2 className="login-title">Login</h2>
-        <Form fields={LOGIN_FIELDS} onSubmit={handleLogin} buttonText="Login" />
+        <Form<LoginFormData>
+          fields={LOGIN_FIELDS}
+          onSubmit={handleLogin}
+          buttonText="Login"
+        />
       </div>
     </div>
   );
