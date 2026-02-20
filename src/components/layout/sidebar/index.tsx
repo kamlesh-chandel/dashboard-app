@@ -15,7 +15,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Button } from '@/components/common/button';
-import { ROUTES, NAV_ITEMS } from '@/utils/routes';
+import { ROUTES, NAV_ITEMS } from '@/constants/routes';
 
 import './index.css';
 import '@/styles/theme.css';
@@ -66,7 +66,9 @@ const Sidebar = () => {
           {NAV_ITEMS.map((item) => (
             <Button
               key={item.path}
-              variant={location.pathname === item.path ? 'primary' : 'gray'}
+              variant={
+                location.pathname === item.path ? 'primary' : 'secondary'
+              }
               onClick={() => handleNavigate(item.path)}
             >
               {item.icon}
@@ -76,7 +78,7 @@ const Sidebar = () => {
         </Stack>
       </div>
 
-      <Button variant="outline-danger" onClick={handleLogout}>
+      <Button variant="error" onClick={handleLogout}>
         <LogoutIcon />
         Logout
       </Button>

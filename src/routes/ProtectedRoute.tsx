@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { isAuthenticated } from '@/utils/auth';
-import { ROUTES } from '@/utils/routes';
+import { ROUTES } from '@/constants/routes';
 import type { authCheck } from '@/types/auth.types';
 
 const checkAuth = isAuthenticated as authCheck;

@@ -3,13 +3,13 @@ import type { InputProps } from '@/types/ui.types';
 import './index.css';
 import '@/styles/theme.css';
 
-export const Input: React.FC<InputProps> = ({
+export const Input = ({
   id,
   type = 'text',
   placeholder,
   value,
   onChange,
-}) => {
+}: InputProps) => {
   return (
     <input
       className="app-input"

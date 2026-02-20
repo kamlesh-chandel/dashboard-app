@@ -1,10 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '@/components/layout/sidebar';
 import Card from '@/components/common/card';
 import BarChart from '@/components/common/bar-chart';
 import { useDashboardData } from '@/hooks/useDashboardData';
-import Loader from '@/components/common/Loader';
-import PageHeader from '@/components/layout/page-header';
+import Loader from '@/components/common/loader';
 
 import './index.css';
 import '@/styles/theme.css';
@@ -40,22 +38,16 @@ const Dashboard = () => {
       })) ?? [];
 
   return (
-    <div className="dashboard-layout">
-      <Sidebar />
+    <>
+      <div className="cards-wrapper">{getCards()}</div>
 
-      <main className="dashboard-content">
-        <PageHeader title="Dashboard" />
-        <div className="content-body">
-          <div className="cards-wrapper">{getCards()}</div>
-          <div className="chart-container">
-            <h3>Analytics Overview</h3>
-            <div className="chart-wrapper">
-              <BarChart data={chartData} />
-            </div>
-          </div>
+      <div className="chart-container">
+        <h3>Analytics Overview</h3>
+        <div className="chart-wrapper">
+          <BarChart data={chartData} />
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 };
 

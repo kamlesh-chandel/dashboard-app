@@ -1,8 +1,8 @@
-import type { PageHeaderProps } from '@/types/ui.types';
+import type { NavbarProps } from '@/types/ui.types';
 import './index.css';
 import '@/styles/theme.css';
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const Navbar = ({ title }: NavbarProps) => {
   const storedUser = localStorage.getItem('user');
 
   const userEmail = storedUser
@@ -19,4 +19,4 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
   );
 };
 
-export default PageHeader;
+export default Navbar;

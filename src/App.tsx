@@ -1,4 +1,4 @@
-import { AppRoutes } from './app/Routes';
+import { AppRoutes } from './routes/AppRoutes';
 import { ToastContainer } from 'react-toastify';
 function App() {
   return (
