@@ -23,6 +23,7 @@ const Dashboard = () => {
   const getCards = () => {
     return data?.map(({ label, value, subtitle }) => (
       <Card
+        key={label}
         title={label ?? ''}
         value={value}
         subtitle={subtitle}

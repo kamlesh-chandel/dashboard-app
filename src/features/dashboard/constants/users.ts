@@ -1,4 +1,4 @@
-import type { tableColumnProps } from '@/types/ui.types';
+import type { tableColumnProps, FormField } from '@/types/ui.types';
 
 export const tableColumns: readonly tableColumnProps[] = [
   { id: 'name', label: 'Name' },
@@ -129,6 +129,56 @@ export const users = [
     assignedGames: [
       { gameName: 'Valorant', type: 'PC Game' },
       { gameName: 'Chess', type: 'Board Game' },
+    ],
+  },
+];
+
+export const USER_FIELDS: FormField[] = [
+  {
+    id: 'name',
+    label: 'Name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Enter name',
+    required: true,
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Enter email',
+    required: true,
+  },
+  {
+    id: 'password',
+    label: 'Password',
+    name: 'password',
+    type: 'password',
+    placeholder: 'Enter password',
+    required: true,
+    minLength: 6,
+  },
+  {
+    id: 'phone',
+    label: 'Phone',
+    name: 'phone',
+    type: 'number',
+    placeholder: 'Enter phone number',
+    required: true,
+    minLength: 10,
+  },
+  {
+    id: 'games',
+    label: 'Assign Games',
+    name: 'games',
+    type: 'multiselect',
+    required: true,
+    options: [
+      { label: 'Chess', value: 'chess' },
+      { label: 'BGMI', value: 'bgmi' },
+      { label: 'Cricket', value: 'cricket' },
+      { label: 'Football', value: 'football' },
     ],
   },
 ];

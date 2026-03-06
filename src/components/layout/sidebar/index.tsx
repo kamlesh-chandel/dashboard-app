@@ -57,7 +57,7 @@ const Sidebar = () => {
           mt={5}
           mb={3}
           ml={3}
-          sx={{ color: 'var(--color-heading)', letterSpacing: 2 }}
+          sx={{ color: 'var(--color-cyan)', letterSpacing: 2 }}
         >
           Admin Panel
         </Typography>

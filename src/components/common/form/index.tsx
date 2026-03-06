@@ -7,6 +7,7 @@ import type { FormProps, FormDataType, FormErrorsType } from '@/types/ui.types';
 
 import './index.css';
 import '@/styles/theme.css';
+import MultipleSelectChip from '../multiselect-chip';
 
 export const Form: React.FC<FormProps> = ({
   fields = [],
@@ -17,13 +18,13 @@ export const Form: React.FC<FormProps> = ({
   const [formData, setFormData] = useState<FormDataType>({});
   const [errors, setErrors] = useState<FormErrorsType>({});
 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: string, value: string | string[]) => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    validateField(name, value);
+    if (typeof value === 'string') validateField(name, value);
   };
 
   const validateField = (name: string, value: string) => {
@@ -61,9 +62,17 @@ export const Form: React.FC<FormProps> = ({
     let hasError = false;
 
     fields.forEach(({ name }) => {
-      const value = formData[name] || '';
-      const error = validateField(name, value);
+      const value = formData[name];
 
+      if (Array.isArray(value)) {
+        if (!value.length) {
+          hasError = true;
+          newErrors[name] = 'Required';
+        }
+        return;
+      }
+
+      const error = validateField(name, (value as string) || '');
       if (error) {
         hasError = true;
         newErrors[name] = error;
@@ -74,9 +83,8 @@ export const Form: React.FC<FormProps> = ({
     return !hasError;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!validateAll()) return;
 
     onSubmit(formData);
@@ -85,17 +93,47 @@ export const Form: React.FC<FormProps> = ({
   };
 
   const fieldsList = () => {
-    return fields.map(({ id, label, name, type, placeholder }) => (
+    return fields.map(({ id, label, name, type, placeholder, options }) => (
       <div className="input-wrapper" key={id}>
         <label htmlFor={id}>{label}</label>
 
-        <Input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          value={formData[name] || ''}
-          onChange={(event) => handleChange(name, event.target.value)}
-        />
+        {(type === 'text' ||
+          type === 'email' ||
+          type === 'password' ||
+          type === 'number') && (
+          <Input
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
+        )}
+
+        {type === 'select' && (
+          <select
+            id={id}
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          >
+            <option value="">Select</option>
+            {options?.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        )}
+
+        {type === 'multiselect' && (
+          <MultipleSelectChip
+            label={label}
+            value={(formData[name] as string[]) || []}
+            options={options}
+            onChange={(val) => handleChange(name, val)}
+          />
+        )}
+
         <Error>{errors[name] || ''}</Error>
       </div>
     ));

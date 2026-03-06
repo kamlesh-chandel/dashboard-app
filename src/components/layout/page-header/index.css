@@ -13,11 +13,27 @@
 .dashboard-heading-wrapper h2 {
   font-size: 28px;
   letter-spacing: 1px;
-  color: var(--color-heading);
+  color: var(--color-cyan);
 }
 
 .user-email {
   font-size: 18px;
   font-weight: 600;
-  color: var(--color-heading);
+  color: var(--color-cyan);
+}
+
+@media (max-width: 768px) {
+  .dashboard-heading-wrapper {
+    margin-top: 60px;
+    padding: 0px 8px;
+  }
+
+  .dashboard-heading-wrapper h2 {
+    font-size: 18px;
+  }
+
+  .user-email {
+    font-size: 14px;
+    font-weight: 500;
+  }
 }

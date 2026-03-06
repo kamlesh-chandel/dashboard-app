@@ -9,7 +9,16 @@ const Card: React.FC<CardProps> = ({ title, value, subtitle, onClick }) => {
   const Icon = title ? ICON_MAP[title as keyof typeof ICON_MAP] : null;
   return (
     <MUICard className="app-card" onClick={onClick}>
-      {Icon && <Icon sx={{ fontSize: 34 }} />}
+      {Icon && (
+        <Icon
+          sx={{
+            fontSize: {
+              sm: 26,
+              md: 34,
+            },
+          }}
+        />
+      )}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {title}
@@ -19,7 +28,14 @@ const Card: React.FC<CardProps> = ({ title, value, subtitle, onClick }) => {
           {value}
         </Typography>
 
-        <Typography variant="caption">{subtitle}</Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {subtitle}
+        </Typography>
       </CardContent>
     </MUICard>
   );

@@ -4,7 +4,6 @@ import type {
   CSSProperties,
   ReactNode,
 } from 'react';
-import type { LoginField } from '@/types/auth.types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -30,7 +29,7 @@ export interface CardProps {
 }
 
 export interface FormDataType {
-  [key: string]: string;
+  [key: string]: string | string[];
 }
 
 export interface FormErrorsType {
@@ -38,7 +37,7 @@ export interface FormErrorsType {
 }
 
 export interface FormProps {
-  fields: LoginField[];
+  fields: FormField[];
   onSubmit: (data: FormDataType) => void;
   buttonText?: string;
   actions?: ReactNode;
@@ -65,4 +64,48 @@ export interface tableColumnProps {
   id: 'name' | 'email' | 'phone' | 'assignedGames' | 'actions';
   label: string;
   align?: 'center';
+}
+
+export interface FieldOption {
+  label: string;
+  value: string;
+}
+
+export interface FieldConfig {
+  id: string;
+  label: string;
+  name: string;
+  type: string;
+  placeholder?: string;
+  required?: boolean;
+  minLength?: number;
+  options?: FieldOption[];
+}
+
+export interface GamesOption {
+  label: string;
+  value: string;
+}
+
+export interface FormField {
+  id: string;
+  label: string;
+  name: string;
+  type: string;
+  placeholder?: string;
+  required?: boolean;
+  minLength?: number;
+  options?: GamesOption[];
+}
+
+export interface MultipleSelectChipOptionProps {
+  label: string;
+  value: string;
+}
+
+export interface MultipleSelectChipProps {
+  label: string;
+  value: string[];
+  options?: MultipleSelectChipOptionProps[];
+  onChange: (value: string[]) => void;
 }
